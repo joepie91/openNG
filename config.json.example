@@ -25,7 +25,8 @@
 		"relationshiptype": "RelationshipType",
 		"relationship": "Relationship",
 		"propertytype": "PropertyType",
-		"property": "Property"
+		"property": "Property",
+		"tag": "Tag"
 	},
 	"components": [
 		"router",
