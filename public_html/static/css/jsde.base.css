@@ -1,0 +1,104 @@
+html, body
+{
+	overflow: hidden;
+}
+
+body
+{
+	position: fixed;
+	margin: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+#jsde_templates
+{
+	display: none;
+}
+
+/* MDIWindow Styling | Generic */
+
+div.window-wrapper
+{
+	position: absolute;
+}
+
+div.window-title
+{
+	position: absolute;
+	z-index: 2;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	cursor: default;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+div.window-outer
+{
+	position: absolute;
+	z-index: 3;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
+div.window-close
+{
+	float: right;
+}
+
+div.window-close a
+{
+	position: absolute;
+	right: 3px;
+	top: 2px;
+	display: block;
+	padding: 1px 4px;
+	text-decoration: none;
+	font-size: 12px;
+	border-radius: 5px;
+}
+
+/* MDIWindow Styling | Normal state */
+
+
+div.window-styled div.window-inner
+{
+	visibility: visible;
+}
+
+
+/* MDIWindow Styling | Dragging state */
+
+
+div.window-dragged div.window-inner
+{
+	visibility: hidden;
+}
+
+div.workspace-bar
+{
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}
+
+a.workspace-tab
+{
+	display: block;
+	float: left;
+}
+
+div.window-resizer
+{
+	position: absolute;
+	width: 12px;
+	height: 12px;
+	bottom: -6px;
+	right: -6px;
+	cursor: se-resize;
+}

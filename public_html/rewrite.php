@@ -21,7 +21,8 @@ $router->allow_slash = true;
 
 $router->routes = array(
 	0 => array(
-		"^/$"		=> "modules/index.php"
+		"^/$"		=> "modules/index.php",
+		"^/editor$"	=> "modules/editor.php"
 	)
 );
 

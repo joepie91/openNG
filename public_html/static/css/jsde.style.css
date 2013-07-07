@@ -1,0 +1,175 @@
+html,body
+{
+	font-family: 'Varela Round', sans-serif, Trebuchet MS;
+	background-color: silver;
+	background-image: url(images/flower.jpg);
+	background-attachment:fixed;
+	background-position:center; 
+}
+
+/* Temporary styles */
+
+div#make-window
+{
+	background-color: white;
+	border: 1px solid gray;
+	padding: 14px;
+	width: 350px;
+	filter:alpha(opacity=85);
+	opacity:0.85;
+}
+
+/* MDIWindow Styling | Generic */
+
+div.window-title
+{
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	-moz-border-radius-topleft: 10px;
+	-moz-border-radius-topright: 10px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	height: 16px;
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 4px;
+	padding-left: 7px;
+	border-top: 1px solid #6262FF;
+	border-right: 1px solid #6262FF;
+	border-left: 1px solid #6262FF;
+}
+
+div.window-outer
+{
+	font-size: 13px;
+	top: 25px;
+	border-bottom: 1px solid gray;
+	border-right: 1px solid gray;
+	border-left: 1px solid gray;
+}
+
+div.window-inner
+{
+	padding: 7px;
+}
+
+div.window-close a
+{
+	color: white;
+	border: 1px solid #014D8C;
+}
+
+div.window-close a:hover
+{
+	background-color: #014D8C;
+	border: 1px solid white;
+}
+
+/* MDIWindow Styling | Normal state */
+
+div.window-styled div.window-title, div.window-styled div.window-outer
+{
+	-webkit-box-shadow: 5px 5px 10px #1a1a1a;
+	-moz-box-shadow: 5px 5px 10px #1a1a1a;
+	box-shadow: 5px 5px 10px #1a1a1a;
+}
+
+div.window-styled div.window-title
+{
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(0,87,179)),
+		color-stop(1, rgb(0,153,255))
+	);
+	background-image: -moz-linear-gradient(
+		center bottom,
+		rgb(0,87,179) 0%,
+		rgb(0,153,255) 100%
+	);
+	
+	filter:alpha(opacity=85);
+	opacity:0.85;
+}
+
+div.window-styled div.window-outer
+{
+	background-color: #F7F7F0;
+	filter:alpha(opacity=95);
+	opacity:0.95;
+}
+
+
+/* MDIWindow Styling | Dragging state */
+
+div.window-dragged div.window-title
+{
+	background-color: #0070D5;
+	background-image: none;
+}
+
+div.workspace-bar
+{
+	height: 32px;
+}
+
+div.window-dragged div.window-outer
+{
+	background: none;
+}
+
+div.window-dragged div.window-title, div.window-dragged div.window-outer
+{
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+a.workspace-tab
+{
+	height: 32px;
+	width: 48px;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	-moz-border-radius-topleft: 10px;
+	-moz-border-radius-topright: 10px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border: 1px solid black;
+	background-color: #E9E9E9;
+	padding-top: 6px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 14px;
+	color: black;
+	margin-top: 10px;
+	filter:alpha(opacity=95);
+	opacity:0.95;
+}
+
+a.workspace-tab:hover
+{
+	background-color: #DADADA;
+	margin-top: 0px;
+}
+
+a.workspace-tab-active
+{
+	font-weight: bold;
+	background-color: #B9B9B9;
+	color: #BC0000;
+}
+
+a.workspace-tab-popup
+{
+	margin-top: 0px;
+}
+
+a.workspace-tab-add
+{
+	background-color: #C8C8C8;
+	filter:alpha(opacity=85);
+	opacity:0.85;
+}

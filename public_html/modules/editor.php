@@ -13,4 +13,4 @@
 
 if(!isset($_APP)) { die("Unauthorized."); }
 
-redirect("/editor");
+echo(NewTemplater::Render("index", $locale->strings, array()));
