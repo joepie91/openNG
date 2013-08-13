@@ -54,6 +54,34 @@ function JsdeWindow(options)
 		this.SetContents(options.contents);
 	}
 	
+	/* TODO: Documentation */
+	if(typeof options.source_url !== "undefined")
+	{
+		if(typeof options.source_method !== "undefined")
+		{
+			var source_method = options.source_method;
+		}
+		else
+		{
+			var source_method = "GET";
+		}
+		
+		this.loading = true;
+		
+		var container = this;
+		
+		$.ajax({
+			type: source_method,
+			url: options.source_url,
+			success: function(response){
+				container.SetContents(response.contents);
+				container.loading = false;
+			},
+			data: options.source_data,
+			dataType: "json"
+		});
+	}
+	
 	if(typeof options.x === "undefined") { this.x = 0; }
 	if(typeof options.y === "undefined") { this.y = 0; }
 	if(typeof options.width === "undefined") { this.width = 250; }
