@@ -14,6 +14,8 @@
 $_APP = true;
 require("includes/base.php");
 
+$sData = array();
+
 $router = new CPHPRouter();
 
 $router->ignore_query = true;
@@ -22,8 +24,17 @@ $router->allow_slash = true;
 $router->routes = array(
 	0 => array(
 		"^/$"		=> "modules/index.php",
-		"^/editor$"	=> "modules/editor.php"
+		"^/editor$"	=> "modules/editor.php",
+		"^/intro$"	=> array(
+					'target'	=> "modules/intro.php",
+					'_json'		=> true
+				   ),
 	)
 );
 
 $router->RouteRequest();
+
+if(!empty($router->uVariables['json']))
+{
+	echo(json_encode($sData));
+}

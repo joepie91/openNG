@@ -1,0 +1,90 @@
+#main_toolbar, #main_toolbar button
+{
+	font-family: "Istok Web";
+}
+
+#main_toolbar
+{
+	padding: 36px 24px;
+}
+
+form.inline
+{
+	display: inline;
+}
+
+#form_search
+{
+	float: left;
+	margin-left: 12px;
+}
+
+#form_search input, #form_search button
+{
+	height: 37px;
+}
+
+#form_search input
+{
+	margin-left: 12px;
+	font-size: 16px;
+	padding: 7px 14px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+	width: 290px;
+}
+
+#form_search button
+{
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
+
+#main_toolbar a.add
+{
+	float: left;
+}
+
+.pure-button
+{
+	padding: 7px 14px;
+}
+
+.pure-button.shadow
+{
+	text-shadow: 1px 1px 1px #424242;
+	-webkit-text-shadow: 1px 1px 1px #424242;
+	-moz-text-shadow: 1px 1px 2px #424242;
+	-o-text-shadow: 1px 1px 1px #424242;
+	-ms-text-shadow: 1px 1px 1px #424242;
+}
+
+.pure-button.add
+{
+	background-color: #15BA31;
+	color: white;
+}
+
+.pure-button.search
+{
+	background-color: #152DBA;
+	color: white;
+}
+
+.pure-button i
+{
+	margin-right: 8px;
+	position: relative;
+	top: 1px;
+}
+
+.element-group
+{
+	display: block;
+	float: left;
+}
+
+.element-group *
+{
+	float: left;
+}

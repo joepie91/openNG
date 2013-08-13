@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="/static/css/jsde.style.css">
 		<script src="/static/js/jquery-1.10.2.min.js"></script>
 		<script src="/static/js/jsde.js"></script>
+		<script src="/static/js/openng.js"></script>
 		<style>
 			body
 			{
@@ -30,23 +31,25 @@
 				-ms-text-shadow: 0px 0px 1px #CEE3F9;
 			}
 		</style>
+		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.1/pure-min.css">
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Istok+Web:400,700">
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700">
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Varela+Round">
-		<script>
-			$(function(){
-				new JsdeWindow({
-					width: 640,
-					height: 480,
-					x: ($(window).width() / 2) - (640 / 2),
-					y: ($(window).height() / 2) - (480 / 2),
-					title: "Welcome!",
-					contents: "Some kind of introduction should probably go here..."
-				});
-			});
-		</script>
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
+		<link rel="stylesheet" href="/static/css/openng.css">
 	</head>
 	<body>
+		<div id="main_toolbar">
+			<a href="#" class="pure-button add shadow" id="button_toolbar_addnode"><i class="icon-plus"></i>Create new node</a>
+			
+			<form class="pure-form inline" id="form_search" method="post" action="/search">
+				<span class="element-group">
+					<input type="text" id="input_search_query" name="query" value="" placeholder="Enter something to search for...">
+					<button type="submit" class="pure-button search shadow"><i class="icon-search"></i>Search</button>
+					<div class="clear"></div>
+				</span>
+			</form>
+		</div>
 		<div id="logo">openNG</div>
 		<!-- <div class="workspace-bar">
 			<span id="workspace-tab-list">
@@ -58,7 +61,7 @@
 			<div class="template_window window-wrapper window-styled">
 				<div class="window-title">
 					<span class="window-title-inner">
-						Test title
+						
 					</span>
 					<div class="window-close">
 						<a href="#">X</a>
@@ -66,12 +69,11 @@
 				</div>
 				<div class="window-outer">
 					<div class="window-inner">
-						<strong>Test contents</strong>
+						
 					</div>
 					<div class="window-resizer">
 					</div>
 				</div>
-				<input type="hidden" name="MDIWindowIdentifier" value="1" class="MDIWindowIdentifier">
 			</div>
 		</div>
 	</body>
