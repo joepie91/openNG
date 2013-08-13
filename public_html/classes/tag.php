@@ -15,9 +15,9 @@ if(!isset($_APP)) { die("Unauthorized."); }
 
 class Tag extends CPHPDatabaseRecordClass
 {
-	public $table_name = "table";
-	public $fill_query = "SELECT * FROM table WHERE `Id` = :Id";
-	public $verify_query = "SELECT * FROM table WHERE `Id` = :Id";
+	public $table_name = "tags";
+	public $fill_query = "SELECT * FROM tags WHERE `Id` = :Id";
+	public $verify_query = "SELECT * FROM tags WHERE `Id` = :Id";
 	
 	public $prototype = array(
 		'string' => array(
@@ -25,6 +25,19 @@ class Tag extends CPHPDatabaseRecordClass
 		),
 		'numeric' => array(
 			"NodeId"	=> "NodeId"
+			"CreatorId"	=> "CreatorId",
+			"RemoverId"	=> "RemoverId"
+		),
+		'timestamp' => array(
+			"CreationDate"	=> "CreationDate",
+			"RemovalDate"	=> "RemovalDate"
+		),
+		'boolean' => array(
+			"IsActive"	=> "IsActive"
+		),
+		'user' => array(
+			"Creator"	=> "CreatorId",
+			"Remover"	=> "RemoverId"
 		),
 		'node' => array(
 			"Node"		=> "NodeId"

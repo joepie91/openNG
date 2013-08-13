@@ -15,9 +15,9 @@ if(!isset($_APP)) { die("Unauthorized."); }
 
 class Property extends CPHPDatabaseRecordClass
 {
-	public $table_name = "nodes";
-	public $fill_query = "SELECT * FROM nodes WHERE `Id` = :Id";
-	public $verify_query = "SELECT * FROM nodes WHERE `Id` = :Id";
+	public $table_name = "properties";
+	public $fill_query = "SELECT * FROM properties WHERE `Id` = :Id";
+	public $verify_query = "SELECT * FROM properties WHERE `Id` = :Id";
 	
 	public $prototype = array(
 		'string' => array(
