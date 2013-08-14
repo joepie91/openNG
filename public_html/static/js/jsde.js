@@ -114,6 +114,11 @@ function JsdeWindow(options)
 	}
 	
 	this.BringToForeground();
+	
+	if(typeof jsde_creation_hook === "function")
+	{
+		jsde_creation_hook(this);
+	}
 }
 
 JsdeWindow.prototype.BringToForeground = function()
@@ -173,8 +178,14 @@ JsdeWindow.prototype.SetSize = function(width, height)
 
 JsdeWindow.prototype.SetContents = function(html)
 {
-	console.log("set contents", html, this);
-	return $(this._inner).html(html);
+	var returnval = $(this._inner).html(html);
+	
+	if(typeof jsde_contents_hook === "function")
+	{
+		jsde_contents_hook(this);
+	}
+	
+	return returnval;
 }
 
 JsdeWindow.prototype.SetTitle = function(html)

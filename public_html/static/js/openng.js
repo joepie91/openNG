@@ -1,3 +1,20 @@
+var jsde_creation_hook = function(win)
+{
+	/* This function is a hook that is called after each creation of
+	 * a JSDE window. */
+	
+}
+
+var jsde_contents_hook = function(win)
+{
+	/* This function is a hook that is called after each time
+	 * content is set in a JSDE window. */
+	placeHooksForWindow(win);
+}
+
+notification_popups = [];
+error_popups = [];
+
 function hookSubmitEvent(form, callback, error)
 {
 	/* Hooks a form to be submitted via AJAX, executing the given
@@ -11,23 +28,116 @@ function hookSubmitEvent(form, callback, error)
 	
 	form.each(function(index){
 		var element = $(this);
-		var method = element.attr("method").toUpperCase();
+		var method = element.attr("method");
 		var target = element.attr("action");
 		
+		if(typeof method !== "undefined")
+		{
+			method = method.toUpperCase();
+		}
+		else
+		{
+			method = "GET";
+		}
+		
 		element.submit(function(){
+			var submit_button = element.find("button[type=submit]");
+			var submit_icon = submit_button.data("submit-icon");
+			
+			if(typeof submit_icon !== "undefined")
+			{
+				/* First we will try to replace an existing icon
+				 * in the button. If there is no icon yet, the
+				 * entire contents of the button will be replaced
+				 * with the submission icon. */
+				var current_icon = submit_button.find("i");
+				
+				if(current_icon.length == 0)
+				{
+					submit_button.html("<span style='text-align: center;'><i></i></span>");
+					current_icon = element.find("i");
+				}
+				
+				current_icon.removeClass().addClass(submit_icon);
+			}
+			
 			var formdata = element.serialize();
 			console.log(formdata);
 			$.ajax({
 				type: method,
 				url: target,
 				data: formdata,
-				success: callback,
-				error: error
+				dataType: "json",
+				success: function(data, xhr){ console.log(data); callback(element, data, xhr); },
+				error: function(data, xhr, err){ error(element, data, xhr, err); }
 			});
 			
 			return false;
 		});
 	});
+}
+
+function placeHooksForWindow(win)
+{
+	console.log();
+	$(win._outer).find("form").each(function(){
+		var callback = $(this).data("hook-callback");
+		
+		if(typeof callback !== "undefined")
+		{
+			console.log("Hooking", this, "using callback", callback);
+			hookSubmitEvent($(this), window[callback]);
+		}
+	});
+}
+
+function callbackNodeCreated(form, data)
+{
+	if(data.result == "success")
+	{
+		spawnNotification(data.message);
+		var node_id = data.node_id;
+		
+		form.getWindow().Close();
+		
+		new JsdeWindow({
+			width: 480,
+			height: 300,
+			x: 100,
+			y: 100,
+			title: "Node lookup",
+			contents: "Loading...",
+			source_url: "/nodes/" + node_id
+		});
+	}
+	else if(data.result == "error")
+	{
+		spawnError(data.message);
+	}
+}
+
+function spawnNotification(message)
+{
+	var popup = spawnPopup(message, "notification");
+	notification_popups.push(popup);
+}
+
+function spawnError(message)
+{
+	var popup = spawnPopup(message, "error");
+	error_popups.push(popup);
+}
+
+function spawnPopup(message, template)
+{
+	var popup = $("#jsde_templates").find(".template_" + template).clone().removeClass("template_notification template_error");
+	popup.find(".message").html(message.replace("\n", "<br>"));
+	popup.hide();
+	popup.prependTo("#notification_area");
+	
+	popup.fadeIn(300).wait(5000).fadeOut(400, $).remove();
+	
+	return popup
 }
 
 $(function(){
@@ -56,4 +166,7 @@ $(function(){
 		contents: "Loading...",
 		source_url: "/intro"
 	});
+	
+	spawnNotification("Test notification");
+	spawnError("Test error");
 });

@@ -162,3 +162,79 @@ textarea
 	bottom: 0px;
 	text-align: right;
 }
+
+i.required
+{
+	font-size: 10px;
+	margin-left: 4px;
+	color: rgb(159,68,74);
+	float: right;
+	margin-right: 7px;
+	margin-top: 2px;
+}
+
+i.error, i.notification
+{
+	font-size: 19px;
+	margin-right: 9px !important;
+}
+
+i.error
+{
+	color: #FFD2D2;
+}
+
+i.notification
+{
+	color: #CBCAFF;
+}
+
+#notification_area
+{
+	position: absolute;
+	right: 0px;
+	bottom: 32px;
+	z-index: 2147483640;
+}
+
+.notification-header
+{
+	margin-right: 6px;
+	font-weight: bold;
+}
+
+.notification-popup, .error-popup
+{
+	text-align: right;
+}
+
+.notification-popup .notification-contents, .error-popup .notification-contents
+{
+	text-align: left;
+	display: inline-block;
+	border-radius: 6px;
+	margin-right: 19px;
+	margin-top: 10px;
+	padding: 9px 14px;
+	color: white;
+	font-size: 15px;
+	filter: alpha(opacity=85);
+	opacity: 0.85;
+	width: auto;
+}
+
+.notification-popup .notification-contents
+{
+	background-color: #2D2D2D;
+}
+
+.error-popup .notification-contents
+{
+	background-color: #371B1B;
+}
+
+.notification-popup ul, .error-popup ul
+{
+	margin: 4px 0px;
+	padding-left: 48px;
+}

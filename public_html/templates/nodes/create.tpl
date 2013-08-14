@@ -1,4 +1,4 @@
-<form class="pure-form pure-form-aligned form_createnode">
+<form method="post" action="/nodes/create" class="pure-form pure-form-aligned form_createnode" data-hook-callback="callbackNodeCreated">
 	<div class="toolbarwindow-contents">
 		<div class="pure-g">
 			<div class="form-block">
@@ -8,7 +8,7 @@
 				
 				<div class="formfield">
 					<div class="pure-u-1-3 label">
-						<label for="input_createnode_name">Name</label>
+						<label for="input_createnode_name">Name <i class="icon-exclamation-sign required"></i></label>
 					</div>
 					<div class="pure-u-2-3">
 						<input class="pure-input-1" type="text" name="name" id="input_createnode_name">
@@ -43,6 +43,6 @@
 		</div>
 	</div>
 	<div class="toolbarwindow-toolbar">
-		<button type="submit" class="pure-button okay shadow"><i class="icon-ok"></i>Create</button>
+		<button type="submit" class="pure-button okay shadow" data-submit-icon="icon-spinner icon-spin"><i class="icon-ok"></i>Create</button>
 	</div>
 </form>

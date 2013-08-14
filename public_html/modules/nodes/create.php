@@ -23,5 +23,51 @@ if($router->uMethod == "get")
 elseif($router->uMethod == "post")
 {
 	/* Process form */
+	$sErrors = array();
 	
+	if(empty($_POST['name']))
+	{
+		$sErrors[] = "You must enter a name for the new node. This name does not have to be unique.";
+	}
+	
+	if(empty($sErrors))
+	{
+		$sNode = new Node();
+		
+		$sNode->uName = $_POST['name'];
+		$sNode->uNotes = $_POST['notes'];
+		
+		$sNode->uTypeId = 0;
+		$sNode->uParentRevisionId = 0;
+		$sNode->uFirstRevisionId = 0;
+		$sNode->uUserId = 0;
+		$sNode->uCreationDate = time();
+		$sNode->uLatestRevision = true;
+		
+		$sNode->InsertIntoDatabase();
+		
+		/* Update the entry to refer to itself as the first revision */
+		$sNode->uFirstRevisionId = $sNode->sId;
+		$sNode->InsertIntoDatabase();
+		
+		$sData = array(
+			"result"	=> "success",
+			"message"	=> "Node '" . htmlspecialchars($_POST['name']) . "' created.",
+			"node_id"	=> $sNode->sId
+		);
+	}
+	else
+	{
+		$sErrorList = "";
+		
+		foreach($sErrors as $sError)
+		{
+			$sErrorList .= "<li>{$sError}</li>";
+		}
+		
+		$sData = array(
+			"result"	=> "error",
+			"message"	=> "One or more form fields were not filled in correctly: <ul>{$sErrorList}</ul>"
+		);
+	}
 }

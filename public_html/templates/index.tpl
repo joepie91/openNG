@@ -5,6 +5,7 @@
 		<link rel="stylesheet" href="/static/css/jsde.base.css">
 		<link rel="stylesheet" href="/static/css/jsde.style.css">
 		<script src="/static/js/jquery-1.10.2.min.js"></script>
+		<script src="/static/js/jquery-timing.min.js"></script>
 		<script src="/static/js/jsde.js"></script>
 		<script src="/static/js/openng.js"></script>
 		<style>
@@ -45,7 +46,7 @@
 			<form class="pure-form inline" id="form_search" method="post" action="/search">
 				<span class="element-group">
 					<input type="text" id="input_search_query" name="query" value="" placeholder="Enter something to search for...">
-					<button type="submit" class="pure-button search shadow"><i class="icon-search"></i>Search</button>
+					<button type="submit" class="pure-button search shadow" data-submit-icon="icon-spinner icon-spin"><i class="icon-search"></i>Search</button>
 					<div class="clear"></div>
 				</span>
 			</form>
@@ -57,6 +58,9 @@
 			</span>
 			<a class="workspace-tab workspace-tab-add" id="workspace_tab_add" href="#">+</a>
 		</div> -->
+		<div id="notification_area">
+			<!-- Notifications go here. -->
+		</div>
 		<div id="jsde_templates">
 			<div class="template_window window-wrapper window-styled">
 				<div class="window-title">
@@ -75,6 +79,24 @@
 					<div class="window-resizer">
 					</div>
 				</div>
+			</div>
+			<div class="template_notification notification-popup">
+				<span class="notification-contents">
+					<span class="notification-header">
+						<i class="icon-info-sign pull-left notification"></i>
+						Notification
+					</span>
+					<span class="message"></span>
+				</span>
+			</div>
+			<div class="template_error error-popup">
+				<span class="notification-contents">
+					<span class="notification-header">
+						<i class="icon-remove-sign pull-left error"></i>
+						Error
+					</span>
+					<span class="message"></span>
+				</span>
 			</div>
 		</div>
 	</body>
