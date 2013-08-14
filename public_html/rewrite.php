@@ -23,12 +23,16 @@ $router->allow_slash = true;
 
 $router->routes = array(
 	0 => array(
-		"^/$"		=> "modules/index.php",
-		"^/editor$"	=> "modules/editor.php",
-		"^/intro$"	=> array(
-					'target'	=> "modules/intro.php",
-					'_json'		=> true
-				   ),
+		"^/$"					=> "modules/index.php",
+		"^/editor$"				=> "modules/editor.php",
+		"^/intro$"				=> array(
+			'target'	=> "modules/intro.php",
+			'_json'		=> true
+		),
+		"^/nodes/create$"			=> array(
+			'target'	=> "modules/nodes/create.php",
+			'_json'		=> true
+		),
 	)
 );
 

@@ -31,7 +31,7 @@ function hookSubmitEvent(form, callback, error)
 }
 
 $(function(){
-	hookSubmitEvent($("#form_addnode"));
+	hookSubmitEvent($("#form_search"));
 	
 	$("#button_toolbar_addnode").click(function(){
 		new JsdeWindow({

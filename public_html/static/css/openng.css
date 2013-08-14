@@ -40,6 +40,18 @@ form.inline
 	border-bottom-left-radius: 0px;
 }
 
+.group-first, .group-middle
+{
+	border-top-right-radius: 0px !important;
+	border-bottom-right-radius: 0px !important;
+}
+
+.group-middle, .group-last
+{
+	border-top-left-radius: 0px !important;
+	border-bottom-left-radius: 0px !important;
+}
+
 #main_toolbar a.add
 {
 	float: left;
@@ -87,4 +99,11 @@ form.inline
 .element-group *
 {
 	float: left;
+}
+
+h1.form
+{
+	font-size: 16px;
+	margin-top: 7px;
+	margin-bottom: 4px;
 }
