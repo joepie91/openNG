@@ -68,8 +68,9 @@
 					</div>
 				</div>
 				<div class="window-outer">
-					<div class="window-inner">
-						
+					<div class="window-inner-wrapper">
+						<div class="window-inner">
+						</div>
 					</div>
 					<div class="window-resizer">
 					</div>

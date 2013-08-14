@@ -45,6 +45,23 @@ div.window-outer
 	bottom: 0px;
 }
 
+div.window-inner-wrapper
+{
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	overflow-y: auto;
+	overflow-x: auto;
+}
+
+.window-noscroll
+{
+	overflow-x: hidden !important;
+	overflow-y: hidden !important;
+}
+
 div.window-close
 {
 	float: right;

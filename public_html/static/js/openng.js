@@ -41,7 +41,8 @@ $(function(){
 			y: 40,
 			title: "Create new node",
 			contents: "Loading...",
-			source_url: "/nodes/create"
+			source_url: "/nodes/create",
+			noscroll: true
 		});
 	});
 	

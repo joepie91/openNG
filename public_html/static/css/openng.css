@@ -77,6 +77,12 @@ form.inline
 	color: white;
 }
 
+.pure-button.okay
+{
+	background-color: #148C29;
+	color: white;
+}
+
 .pure-button.search
 {
 	background-color: #152DBA;
@@ -104,8 +110,13 @@ form.inline
 h1.form
 {
 	font-size: 16px;
-	margin-top: 7px;
+	margin-top: 0px;
 	margin-bottom: 6px;
+}
+
+.form-block
+{
+	margin-bottom: 5px;
 }
 
 .pure-form label
@@ -127,4 +138,27 @@ div.formfield, div.property
 textarea
 {
 	height: 90px;
+}
+
+.toolbarwindow-contents
+{
+	position: absolute;
+	padding: 7px;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 38px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.toolbarwindow-toolbar
+{
+	position: absolute;
+	padding: 4px;
+	height: 30px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	text-align: right;
 }

@@ -90,6 +90,8 @@ function JsdeWindow(options)
 	if(typeof options.min_height === "undefined") { this.min_height = 120; }
 	if(typeof options.resizable === "undefined") { this.resizable = true; }
 	
+	if(typeof options.noscroll === "undefined") { this.noscroll = false; }
+	
 	this.SetPosition(this.x, this.y);
 	this.SetSize(this.width, this.height);
 	
@@ -105,6 +107,11 @@ function JsdeWindow(options)
 	$(this._outer).find(".window-close a").click(this._HandleClose);
 	
 	$(this._outer).find(".window-resizer").mousedown(this._HandleStartResize.bind(this));
+	
+	if(this.noscroll)
+	{
+		$(this._outer).find(".window-inner-wrapper").addClass("window-noscroll");
+	}
 	
 	this.BringToForeground();
 }
