@@ -32,28 +32,54 @@ elseif($router->uMethod == "post")
 	
 	if(empty($sErrors))
 	{
+		$uNodeId = generate_uuid();
+		
 		$sNode = new Node();
 		
+		$sNode->uId = $uNodeId;
 		$sNode->uName = $_POST['name'];
 		$sNode->uNotes = $_POST['notes'];
 		
-		$sNode->uTypeId = 0;
-		$sNode->uParentRevisionId = 0;
-		$sNode->uFirstRevisionId = 0;
+		$sNode->uTypeId = "";
+		$sNode->uParentRevisionId = "";
+		$sNode->uFirstRevisionId = $uNodeId;
 		$sNode->uUserId = 0;
 		$sNode->uCreationDate = time();
 		$sNode->uLatestRevision = true;
 		
 		$sNode->InsertIntoDatabase();
 		
-		/* Update the entry to refer to itself as the first revision */
-		$sNode->uFirstRevisionId = $sNode->sId;
-		$sNode->InsertIntoDatabase();
+		/* Insert properties, if any */
+		foreach(array_combine($_POST['property_name'], $_POST['property_value']) as $property_name => $property_value)
+		{
+			if(!empty($property_name))
+			{
+				$uPropertyId = generate_uuid();
+				
+				$sProperty = new Property();
+				
+				$sProperty->uId = $uPropertyId;
+				$sProperty->uName = $property_name;
+				$sProperty->uValue = $property_value;
+				$sProperty->uSource = "";
+				
+				$sProperty->uTypeId = "";
+				$sProperty->uParentRevisionId = "";
+				$sProperty->uFirstRevisionId = $uPropertyId;
+				$sProperty->uNodeId = $uNodeId;
+				$sProperty->uRelationshipId = "";
+				$sProperty->uReliability = 1; /* Normal */
+				$sProperty->uCreationDate = time();
+				$sProperty->uLatestRevision = true;
+				
+				$sProperty->InsertIntoDatabase();
+			}
+		}
 		
 		$sData = array(
 			"result"	=> "success",
 			"message"	=> "Node '" . htmlspecialchars($_POST['name']) . "' created.",
-			"node_id"	=> $sNode->sId
+			"node_id"	=> $uNodeId
 		);
 	}
 	else

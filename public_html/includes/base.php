@@ -16,3 +16,10 @@ if(!isset($_APP)) { die("Unauthorized."); }
 $_CPHP = true;
 $_CPHP_CONFIG = "../config.json";
 require("cphp/base.php");
+
+require("uuid.php");
+
+function generate_uuid()
+{
+	return UUID::v4();
+}

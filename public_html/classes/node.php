@@ -22,12 +22,12 @@ class Node extends CPHPDatabaseRecordClass
 	public $prototype = array(
 		'string' => array(
 			"Name"			=> "Name",
-			"Notes"			=> "Notes"
-		),
-		'numeric' => array(
+			"Notes"			=> "Notes",
 			"TypeId"		=> "TypeId",
 			"ParentRevisionId"	=> "ParentRevisionId",
-			"FirstRevisionId"	=> "FirstRevisionId",
+			"FirstRevisionId"	=> "FirstRevisionId"
+		),
+		'numeric' => array(
 			"UserId"		=> "UserId"
 		),
 		'timestamp' => array(

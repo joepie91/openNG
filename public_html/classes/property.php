@@ -23,15 +23,15 @@ class Property extends CPHPDatabaseRecordClass
 		'string' => array(
 			"Name"			=> "Name",
 			"Value"			=> "Value",
-			"Source"		=> "Source"
-		),
-		'numeric' => array(
+			"Source"		=> "Source",
 			"TypeId"		=> "TypeId",
 			"ParentRevisionId"	=> "ParentRevisionId",
 			"FirstRevisionId"	=> "FirstRevisionId",
-			"UserId"		=> "UserId",
 			"NodeId"		=> "NodeId",
-			"RelationshipId"	=> "RelationshipId",
+			"RelationshipId"	=> "RelationshipId"
+		),
+		'numeric' => array(
+			"UserId"		=> "UserId",
 			"Reliability"		=> "Reliability"
 		),
 		'timestamp' => array(

@@ -23,15 +23,15 @@ class Relationship extends CPHPDatabaseRecordClass
 		'string' => array(
 			"Name"			=> "Name",
 			"Source"		=> "Source",
-			"Notes"			=> "Notes"
-		),
-		'numeric' => array(
+			"Notes"			=> "Notes",
 			"TypeId"		=> "TypeId",
 			"ParentRevisionId"	=> "ParentRevisionId",
 			"FirstRevisionId"	=> "FirstRevisionId",
-			"UserId"		=> "UserId",
 			"FromNodeId"		=> "FromNodeId",
-			"ToNodeId"		=> "ToNodeId",
+			"ToNodeId"		=> "ToNodeId"
+		),
+		'numeric' => array(
+			"UserId"		=> "UserId",
 			"Reliability"		=> "Reliability"
 		),
 		'timestamp' => array(
