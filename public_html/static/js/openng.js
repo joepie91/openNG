@@ -1,3 +1,9 @@
+(function($){
+	$.fn.restoreIcon = function() {
+		return this.removeClass().addClass(this.data("old-class"));
+	};
+})(jQuery);
+
 var jsde_creation_hook = function(win)
 {
 	/* This function is a hook that is called after each creation of
@@ -14,6 +20,7 @@ var jsde_contents_hook = function(win)
 
 notification_popups = [];
 error_popups = [];
+template_cache = {};
 
 function hookSubmitEvent(form, callback, error)
 {
@@ -58,7 +65,7 @@ function hookSubmitEvent(form, callback, error)
 					current_icon = element.find("i");
 				}
 				
-				current_icon.removeClass().addClass(submit_icon);
+				current_icon.data("old-class", current_icon.attr("class")).removeClass().addClass(submit_icon);
 			}
 			
 			var formdata = element.serialize();
@@ -82,11 +89,12 @@ function placeHooksForWindow(win)
 	console.log();
 	$(win._outer).find("form").each(function(){
 		var callback = $(this).data("hook-callback");
+		var error_callback = $(this).data("hook-error-callback");
 		
 		if(typeof callback !== "undefined")
 		{
 			console.log("Hooking", this, "using callback", callback);
-			hookSubmitEvent($(this), window[callback]);
+			hookSubmitEvent($(this), window[callback], window[error_callback]);
 		}
 	});
 }
@@ -112,9 +120,15 @@ function callbackNodeCreated(form, data)
 	}
 	else if(data.result == "error")
 	{
+		form.find("button[type=submit] i").restoreIcon();
 		spawnError(data.message);
 	}
 }
+
+/*function callbackNodeCreationFailed(form, data)
+{
+	form.find("button[type=submit]").restoreIcon();
+}*/
 
 function spawnNotification(message)
 {
@@ -138,6 +152,16 @@ function spawnPopup(message, template)
 	popup.fadeIn(300).wait(5000).fadeOut(400, $).remove();
 	
 	return popup
+}
+
+function spawnTemplate(name)
+{
+	if(!template_cache[name])
+	{
+		template_cache[name] = $("*[data-template-name=" + name + "]").first();
+	}
+	
+	return template_cache[name].clone();
 }
 
 $(function(){
@@ -169,4 +193,14 @@ $(function(){
 	
 	spawnNotification("Test notification");
 	spawnError("Test error");
+	
+	$("body").on("input", ".auto-duplicate input", function(){
+		var parent = $(this).closest(".auto-duplicate");
+		
+		if(!parent.data("duplicated"))
+		{
+			spawnTemplate(parent.data("template-name")).insertAfter(parent).find("input").val("");
+			parent.data("duplicated", true);
+		}
+	})
 });

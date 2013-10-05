@@ -42,3 +42,7 @@ if(!empty($router->uVariables['json']))
 {
 	echo(json_encode($sData));
 }
+
+$sNode = new Node(1);
+$sNode->uName = random_string(15);
+$sNode->InsertIntoDatabase();
