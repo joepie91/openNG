@@ -125,6 +125,11 @@ h1.form
 	margin-left: 1px;
 }
 
+.pure-form input.invalid, .pure-form textarea.invalid
+{
+	border-color: #B60202 !important;
+}
+
 div.label
 {
 	padding-top: 4px;

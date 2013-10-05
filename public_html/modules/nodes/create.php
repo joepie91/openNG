@@ -24,10 +24,12 @@ elseif($router->uMethod == "post")
 {
 	/* Process form */
 	$sErrors = array();
+	$sErrorFields = array();
 	
 	if(empty($_POST['name']))
 	{
 		$sErrors[] = "You must enter a name for the new node. This name does not have to be unique.";
+		$sErrorFields[] = "name";
 	}
 	
 	if(empty($sErrors))
@@ -93,7 +95,8 @@ elseif($router->uMethod == "post")
 		
 		$sData = array(
 			"result"	=> "error",
-			"message"	=> "One or more form fields were not filled in correctly: <ul>{$sErrorList}</ul>"
+			"message"	=> "One or more form fields were not filled in correctly: <ul>{$sErrorList}</ul>",
+			"errorfields"	=> $sErrorFields
 		);
 	}
 }

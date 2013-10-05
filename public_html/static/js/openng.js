@@ -70,13 +70,14 @@ function hookSubmitEvent(form, callback, error)
 			
 			var formdata = element.serialize();
 			console.log(formdata);
+			
 			$.ajax({
 				type: method,
 				url: target,
 				data: formdata,
 				dataType: "json",
 				success: function(data, xhr){ console.log(data); callback(element, data, xhr); },
-				error: function(data, xhr, err){ error(element, data, xhr, err); }
+				error: function(data, xhr, err){ error(element, data, xhr, err); /* This handles HTTP errors, NOT application errors! */ }
 			});
 			
 			return false;
@@ -121,6 +122,18 @@ function callbackNodeCreated(form, data)
 	else if(data.result == "error")
 	{
 		form.find("button[type=submit] i").restoreIcon();
+		
+		form.find("input, textarea").removeClass("invalid");
+		
+		if(data.errorfields)
+		{
+			for(i in data.errorfields)
+			{
+				var field_name = data.errorfields[i];
+				form.find("input[name=" + field_name + "], textarea[name=" + field_name + "]").addClass("invalid");
+			}
+		}
+		
 		spawnError(data.message);
 	}
 }
