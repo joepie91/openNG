@@ -2,7 +2,6 @@ html,body
 {
 	font-family: 'Varela Round', sans-serif, Trebuchet MS;
 	background-color: silver;
-	background-image: url(images/flower.jpg);
 	background-attachment:fixed;
 	background-position:center; 
 }
