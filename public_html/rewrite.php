@@ -33,6 +33,10 @@ $router->routes = array(
 			'target'	=> "modules/nodes/create.php",
 			'_json'		=> true
 		),
+		"^/autocomplete/search$"		=> array(
+			"target"	=> "modules/autocomplete/search.php",
+			"_json"		=> true
+		)
 	)
 );
 

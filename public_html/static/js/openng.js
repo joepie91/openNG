@@ -77,7 +77,7 @@ function hookSubmitEvent(form, callback, error)
 				data: formdata,
 				dataType: "json",
 				success: function(data, xhr){ console.log(data); callback(element, data, xhr); },
-				error: function(data, xhr, err){ error(element, data, xhr, err); /* This handles HTTP errors, NOT application errors! */ }
+				error: function(data, xhr, err){ if(typeof error !== "undefined") { error(element, data, xhr, err); } /* This handles HTTP errors, NOT application errors! */ }
 			});
 			
 			return false;
@@ -177,6 +177,32 @@ function spawnTemplate(name)
 	return template_cache[name].clone();
 }
 
+function SearchCompletionSource(element)
+{
+	this.element = element;
+	this.results = [];
+}
+
+SearchCompletionSource.prototype.getItemCount = function() {
+	return this.results.length;
+}
+
+SearchCompletionSource.prototype.getAll = function() {
+	return this.results;
+}
+
+SearchCompletionSource.prototype.getItem = function(index) {
+	return this.results[index];
+}
+
+SearchCompletionSource.prototype.updateItems = function(query, callback) {
+	$.ajax({
+		url: "/autocomplete/search/?q=" + escape(query),
+		dataType: "json",
+		success: function(result) { this.results = result; console.log(result); callback(); }.bind(this)
+	});
+}
+
 $(function(){
 	hookSubmitEvent($("#form_search"));
 	
@@ -215,5 +241,16 @@ $(function(){
 			spawnTemplate(parent.data("template-name")).insertAfter(parent).find("input").val("");
 			parent.data("duplicated", true);
 		}
-	})
+	});
+	
+	autocompleter_search = new AutoCompleter("search");
+	
+	//setTimeout(function(){$("#input_search_query").autoComplete(autocompleter_search, new SearchCompletionSource($("#input_search_query")))}, 1000);
+	
+	$("#input_search_query").on("input", function(){
+		if(!$(this).data("attached-autocomplete"))
+		{
+			$("#input_search_query").autoComplete(autocompleter_search, new SearchCompletionSource($("#input_search_query")));
+		}
+	});
 });

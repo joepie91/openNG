@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="/static/css/jsde.style.css">
 		<script src="/static/js/jquery-1.10.2.min.js"></script>
 		<script src="/static/js/jquery-timing.min.js"></script>
+		<script src="/static/js/jquery-autocomplete.js"></script>
 		<script src="/static/js/jsde.js"></script>
 		<script src="/static/js/openng.js"></script>
 		<style>
@@ -58,6 +59,25 @@
 			</span>
 			<a class="workspace-tab workspace-tab-add" id="workspace_tab_add" href="#">+</a>
 		</div> -->
+		
+		
+		<div id="autocomplete_search" class="autocompleter autocompleter-template" data-template="search">
+			<div class="results">
+				<div class="entry selected">
+					<span class="autocompleter-field name" data-field="name">Name</span>
+					<div class="clear"></div>
+					<span class="autocompleter-field description" data-field="description">Description</span>
+					<span class="autocompleter-field date" data-field="created">Creation date</span>
+				</div>
+			</div>
+			<div class="noresults">
+				No results.
+			</div>
+			<div class="loading">
+				Searching...
+			</div>
+		</div>
+		
 		<div id="notification_area">
 			<!-- Notifications go here. -->
 		</div>

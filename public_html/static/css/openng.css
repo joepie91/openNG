@@ -40,6 +40,71 @@ form.inline
 	border-bottom-left-radius: 0px;
 }
 
+#autocomplete_search
+{
+	display: none;
+	position: absolute;
+	width: 400px;
+	background-color: white;
+	border: 1px solid #5A6DBB;
+	border-radius: 0px 0px 3px 3px;
+	border-top: none;
+	-webkit-font-smoothing: antialiased;
+	font-family: 'Istok Web';
+	z-index: 9999999;
+}
+
+#autocomplete_search .entry
+{
+	border-bottom: 1px solid #C2C2C2;
+	padding: 7px 9px;
+	color: #393939;
+}
+
+#autocomplete_search .entry:last-child
+{
+	border-bottom: none;
+}
+
+#autocomplete_search .entry.selected
+{
+	background-color: #4253B6;
+	color: white;
+}
+
+#autocomplete_search .entry .name
+{
+	font-size: 18px;
+	font-weight: bold;
+}
+
+#autocomplete_search .entry .description, #autocomplete_search .entry .date
+{
+	font-size: 14px;
+}
+
+#autocomplete_search .entry .date
+{
+	float: right;
+	color: gray;
+}
+
+#autocomplete_search .entry.selected .date
+{
+	color: white;
+}
+
+#autocomplete_search .loading, #autocomplete_search .noresults
+{
+	padding: 8px 10px;
+	font-size: 17px;
+}
+
+#autocomplete_search .loading
+{
+	font-style: italic;
+}
+
 .group-first, .group-middle
 {
 	border-top-right-radius: 0px !important;
