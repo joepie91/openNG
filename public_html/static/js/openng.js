@@ -199,7 +199,7 @@ SearchCompletionSource.prototype.updateItems = function(query, callback) {
 	$.ajax({
 		url: "/autocomplete/search/?q=" + escape(query),
 		dataType: "json",
-		success: function(result) { this.results = result; console.log(result); callback(); }.bind(this)
+		success: function(result) { this.results = result; callback(); }.bind(this)
 	});
 }
 
@@ -247,12 +247,7 @@ $(function(){
 	
 	//setTimeout(function(){$("#input_search_query").autoComplete(autocompleter_search, new SearchCompletionSource($("#input_search_query")))}, 1000);
 	
-	$("#input_search_query").on("input", function(){
-		if(!$(this).data("attached-autocomplete"))
-		{
-			$("#input_search_query").autoComplete(autocompleter_search, new SearchCompletionSource($("#input_search_query")), function(data){
-				console.log(data);
-			});
-		}
+	$("#input_search_query").autoComplete(autocompleter_search, new SearchCompletionSource($("#input_search_query")), function(data){
+		console.log(data);
 	});
 });

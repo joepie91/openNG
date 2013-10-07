@@ -240,13 +240,19 @@ AutoCompleterInstance.prototype.show = function() {
 	};
 	
 	$.fn.autoComplete = function(autocompleter, source, callback) {
-		var instance = autocompleter.spawn(source);
-		instance.callback = callback;
-		instance.attachBelow(this);
-		instance.hookKeyEvents(this);
-		instance.hookMouseEvents(this);
-		instance._updateItems();
-		this.attr("autocomplete", "off");
+		this.on("input.autocomplete_hook", function(){
+			if(!$(this).data("attached-autocomplete"))
+			{
+				var instance = autocompleter.spawn(source);
+				instance.callback = callback;
+				instance.attachBelow($(this));
+				instance.hookKeyEvents($(this));
+				instance.hookMouseEvents($(this));
+				instance._updateItems();
+				$(this).attr("autocomplete", "off");
+			}
+		});
+		
 		return this;
 	};
 }(jQuery));
