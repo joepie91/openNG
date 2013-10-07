@@ -108,16 +108,7 @@ function callbackNodeCreated(form, data)
 		var node_id = data.node_id;
 		
 		form.getWindow().Close();
-		
-		new JsdeWindow({
-			width: 480,
-			height: 300,
-			x: 100,
-			y: 100,
-			title: "Node lookup",
-			contents: "Loading...",
-			source_url: "/nodes/" + node_id
-		});
+		openWindowNodeDetails(node_id);
 	}
 	else if(data.result == "error")
 	{
@@ -136,6 +127,19 @@ function callbackNodeCreated(form, data)
 		
 		spawnError(data.message);
 	}
+}
+
+function openWindowNodeDetails(id)
+{
+	new JsdeWindow({
+		width: 480,
+		height: 300,
+		x: 100,
+		y: 100,
+		title: "Node lookup",
+		contents: "Loading...",
+		source_url: "/nodes/" + id
+	});
 }
 
 /*function callbackNodeCreationFailed(form, data)
@@ -246,6 +250,7 @@ $(function(){
 	autocompleter_search = new AutoCompleter("search");
 	
 	$("#input_search_query").autoComplete(autocompleter_search, new SearchCompletionSource($("#input_search_query")), function(data){
-		console.log(data);
+		openWindowNodeDetails(data.value);
+		this.target.val("");
 	});
 });
