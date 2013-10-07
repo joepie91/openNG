@@ -250,7 +250,9 @@ $(function(){
 	$("#input_search_query").on("input", function(){
 		if(!$(this).data("attached-autocomplete"))
 		{
-			$("#input_search_query").autoComplete(autocompleter_search, new SearchCompletionSource($("#input_search_query")));
+			$("#input_search_query").autoComplete(autocompleter_search, new SearchCompletionSource($("#input_search_query")), function(data){
+				console.log(data);
+			});
 		}
 	});
 });

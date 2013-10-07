@@ -147,7 +147,7 @@ AutoCompleterInstance.prototype._selectCurrent = function() {
 	
 	if(typeof this.callback !== "undefined")
 	{
-		this.callback(item).apply(this);
+		this.callback.call(this, item);
 	}
 	else
 	{
