@@ -216,7 +216,7 @@ $(function(){
 	hookSubmitEvent($("#form_search"));
 	
 	$("#button_toolbar_addnode").click(function(){
-		new JsdeWindow({
+		var win = new JsdeWindow({
 			width: 320,
 			height: 400,
 			x: 40,
@@ -224,6 +224,7 @@ $(function(){
 			title: "Create new node",
 			contents: "Loading...",
 			source_url: "/nodes/create",
+			callback: function(){ $(win._inner).find("input[name=name]").focus(); },
 			noscroll: true
 		});
 	});
@@ -257,5 +258,25 @@ $(function(){
 	$("#input_search_query").autoComplete(autocompleter_search, new SearchCompletionSource($("#input_search_query")), function(data){
 		openWindowNodeDetails(data.value);
 		this.target.val("");
+	});
+	
+	$("body").keydown(function(event){
+		switch(event.which)
+		{
+			case 70: // F
+				if(event.ctrlKey)
+				{
+					$("#input_search_query").focus();
+					event.preventDefault();
+				}
+				break;
+			case 77: // M
+				if(event.ctrlKey)
+				{
+					$("#button_toolbar_addnode").click();
+					event.preventDefault();
+				}
+				break;
+		}
 	});
 });

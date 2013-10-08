@@ -61,7 +61,7 @@ AutoCompleterInstance.prototype._handleKeyUp = function(event) {
 	{
 		case 9:  // Tab
 		case 13: // Enter/Return
-			if(this.visible == true)
+			if(this.visible == true && this.total_items > 0)
 			{
 				this._selectCurrent();
 				event.stopPropagation();
@@ -77,7 +77,7 @@ AutoCompleterInstance.prototype._handleKeyDown = function(event) {
 		case 9:  // Tab
 		case 13: // Enter/Return
 			/* We don't want this to do anything. */
-			if(this.visible == true)
+			if(this.visible == true && this.total_items > 0)
 			{
 				event.stopPropagation();
 				event.preventDefault();

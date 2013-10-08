@@ -67,6 +67,7 @@ function JsdeWindow(options)
 		}
 		
 		this.loading = true;
+		this.loaded_callback = options.callback;
 		
 		var container = this;
 		
@@ -76,6 +77,10 @@ function JsdeWindow(options)
 			success: function(response){
 				container.SetContents(response.contents);
 				container.loading = false;
+				if(typeof container.loaded_callback !== "undefined")
+				{
+					container.loaded_callback();
+				}
 			},
 			data: options.source_data,
 			dataType: "json"
