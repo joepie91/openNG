@@ -200,7 +200,12 @@ SearchCompletionSource.prototype.getItem = function(index) {
 }
 
 SearchCompletionSource.prototype.updateItems = function(query, callback) {
-	$.ajax({
+	if(typeof this.request !== "undefined")
+	{
+		this.request.abort();
+	}
+	
+	this.request = $.ajax({
 		url: "/autocomplete/search/?q=" + escape(query),
 		dataType: "json",
 		success: function(result) { this.results = result; callback(); }.bind(this)
