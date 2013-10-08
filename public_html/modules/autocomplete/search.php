@@ -13,6 +13,8 @@
 
 if(!isset($_APP)) { die("Unauthorized."); }
 
+$sNodes = Node::CreateFromQuery("SELECT * FROM nodes WHERE `LatestRevision` = 1 AND `Name` LIKE :Name", array("Name" => "%{$_GET['q']}%"));
+
 $sOriginalData = array(
 	array(
 		"name" => "ChicagoVPS",
@@ -36,12 +38,12 @@ $sOriginalData = array(
 
 $sData = array();
 
-foreach($sOriginalData as $sEntry)
+foreach($sNodes as $sNode)
 {
-	if(strpos(strtolower($sEntry['name']), strtolower($_GET['q'])) !== false)
-	{
-		$sData[] = $sEntry;
-	}
+	$sData[] = array(
+		"name"		=> $sNode->sName,
+		"description"	=> $sNode->sNotes,
+		"value"		=> $sNode->sId,
+		"created"	=> local_from_unix($sNode->sCreationDate, $locale->date_short)
+	);
 }
-
-sleep(1);
