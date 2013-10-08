@@ -25,6 +25,7 @@ var drag_start = {x: 0, y: 0};
 var currently_resized_window = null;
 var currently_resizing = false;
 var resize_start = {x: 0, y: 0};
+var currently_focused_window = null;
 
 $(function(){
 	$("body").mousemove(_HandleMouseMove);
@@ -131,6 +132,9 @@ JsdeWindow.prototype.BringToForeground = function()
 	this.z = next_z_index;
 	$(this._outer).css({"z-index": next_z_index})
 	next_z_index++;
+	currently_focused_window = this;
+	$(".window-wrapper").removeClass("window-focused");
+	$(this._outer).addClass("window-focused");
 	return this;
 }
 

@@ -80,17 +80,17 @@ div.window-styled div.window-title
 		linear,
 		left bottom,
 		left top,
-		color-stop(0, rgb(0,87,179)),
-		color-stop(1, rgb(0,153,255))
+		color-stop(0, rgb(16,44,73)),
+		color-stop(1, rgb(145,172,190))
 	);
 	background-image: -moz-linear-gradient(
 		center bottom,
-		rgb(0,87,179) 0%,
-		rgb(0,153,255) 100%
+		rgb(16,44,73) 0%,
+		rgb(145,172,190) 100%
 	);
 	
-	filter:alpha(opacity=85);
-	opacity:0.85;
+	filter:alpha(opacity=95);
+	opacity:0.95;
 }
 
 div.window-styled div.window-outer
@@ -100,6 +100,23 @@ div.window-styled div.window-outer
 	opacity:0.95;
 }
 
+div.window-focused.window-styled div.window-title
+{
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(0,87,179)),
+		color-stop(1, rgb(0,153,255))
+	);
+	background-image: -moz-linear-gradient(
+		center bottom,
+		rgb(0,87,179) 0%,
+		rgb(0,153,255) 100%
+	);
+	filter:alpha(opacity=85);
+	opacity:0.85;
+}
 
 /* MDIWindow Styling | Dragging state */
 
