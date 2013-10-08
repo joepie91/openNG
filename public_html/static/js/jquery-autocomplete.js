@@ -61,9 +61,12 @@ AutoCompleterInstance.prototype._handleKeyUp = function(event) {
 	{
 		case 9:  // Tab
 		case 13: // Enter/Return
-			this._selectCurrent();
-			event.stopPropagation();
-			event.preventDefault();
+			if(this.visible == true)
+			{
+				this._selectCurrent();
+				event.stopPropagation();
+				event.preventDefault();
+			}
 			break;
 	}
 }
@@ -74,8 +77,11 @@ AutoCompleterInstance.prototype._handleKeyDown = function(event) {
 		case 9:  // Tab
 		case 13: // Enter/Return
 			/* We don't want this to do anything. */
-			event.stopPropagation();
-			event.preventDefault();
+			if(this.visible == true)
+			{
+				event.stopPropagation();
+				event.preventDefault();
+			}
 			break;
 		case 38: // Arrow Up
 			this._movePrevious();
@@ -215,11 +221,13 @@ AutoCompleterInstance.prototype.continueUpdate = function() {
 }
 
 AutoCompleterInstance.prototype.hide = function() {
+	this.visible = false;
 	this.element.hide();
 	$(this.target).css({"border-bottom-left-radius": "", "border-bottom-right-radius": ""});
 }
 
 AutoCompleterInstance.prototype.show = function() {
+	this.visible = true;
 	this.element.show();
 	$(this.target).css({"border-bottom-left-radius": 0, "border-bottom-right-radius": 0});
 }

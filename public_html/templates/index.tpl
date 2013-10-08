@@ -68,6 +68,7 @@
 					<div class="clear"></div>
 					<span class="autocompleter-field description" data-field="description">Description</span>
 					<span class="autocompleter-field date" data-field="created">Creation date</span>
+					<div class="clear"></div>
 				</div>
 			</div>
 			<div class="noresults">

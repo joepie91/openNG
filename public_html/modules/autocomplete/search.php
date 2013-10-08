@@ -13,28 +13,14 @@
 
 if(!isset($_APP)) { die("Unauthorized."); }
 
-$sNodes = Node::CreateFromQuery("SELECT * FROM nodes WHERE `LatestRevision` = 1 AND `Name` LIKE :Name", array("Name" => "%{$_GET['q']}%"));
-
-$sOriginalData = array(
-	array(
-		"name" => "ChicagoVPS",
-		"description" => "A VPS company.",
-		"value" => "id-for-chicagovps",
-		"created" => "2013-08-02"
-	),
-	array(
-		"name" => "BuffaloVPS",
-		"description" => "A VPS company.",
-		"value" => "id-for-buffalovps",
-		"created" => "2013-08-03"
-	),
-	array(
-		"name" => "ColoCrossing",
-		"description" => "A colocation provider.",
-		"value" => "id-for-colocrossing",
-		"created" => "2013-08-06"
-	)
-);
+try
+{
+	$sNodes = Node::CreateFromQuery("SELECT * FROM nodes WHERE `LatestRevision` = 1 AND `Name` LIKE :Name LIMIT 5", array("Name" => "%{$_GET['q']}%"));
+}
+catch (NotFoundException $e)
+{
+	$sNodes = array();
+}
 
 $sData = array();
 
