@@ -33,6 +33,10 @@ $router->routes = array(
 			'target'	=> "modules/nodes/create.php",
 			'_json'		=> true
 		),
+		"^/nodes/([0-9a-f-]{36})$"		=> array(
+			"target"	=> "modules/nodes/lookup.php",
+			"_json"		=> true
+		),
 		"^/autocomplete/search$"		=> array(
 			"target"	=> "modules/autocomplete/search.php",
 			"_json"		=> true
@@ -46,8 +50,3 @@ if(!empty($router->uVariables['json']))
 {
 	echo(json_encode($sData));
 }
-/*
-$sNode = new Node(1);
-$sNode->uName = random_string(15);
-$sNode->InsertIntoDatabase();
-*/
