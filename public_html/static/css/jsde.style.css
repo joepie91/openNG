@@ -34,6 +34,13 @@ div.window-title
 	font-weight: bold;
 	padding: 4px;
 	padding-left: 7px;
+	border-top: 1px solid #959595;
+	border-right: 1px solid #959595;
+	border-left: 1px solid #959595;
+}
+
+div.window-focused div.window-title
+{
 	border-top: 1px solid #6262FF;
 	border-right: 1px solid #6262FF;
 	border-left: 1px solid #6262FF;
@@ -80,12 +87,12 @@ div.window-styled div.window-title
 		linear,
 		left bottom,
 		left top,
-		color-stop(0, rgb(16,44,73)),
+		color-stop(0, rgb(82,82,82)),
 		color-stop(1, rgb(145,172,190))
 	);
 	background-image: -moz-linear-gradient(
 		center bottom,
-		rgb(16,44,73) 0%,
+		rgb(82,82,82) 0%,
 		rgb(145,172,190) 100%
 	);
 	
