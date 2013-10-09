@@ -313,3 +313,66 @@ i.notification
 	margin: 4px 0px;
 	padding-left: 48px;
 }
+
+.window-inner
+{
+	.header
+	{
+		margin: 4px 0px;
+	}
+	
+	.lower-header
+	{
+		margin-top: 7px;
+	}
+
+	h1
+	{
+		@extend .header;
+		font-size: 20px;
+	}
+	
+	h2
+	{
+		@extend .header;
+		@extend .lower-header;
+		font-size: 16px;
+	}
+	
+	.unit-content
+	{
+		padding: 6px;
+	}
+	
+	a.source-ref
+	{
+		float: right;
+		margin-right: -4px;
+		text-decoration: none;
+		color: gray;
+		font-size: 13px;
+		
+		&:hover
+		{
+			color: black;
+		}
+	}
+	
+	table
+	{
+		font-size: 13px;
+		width: 100%;
+	}
+	
+	td.property-name
+	{
+		width: 40%;
+		text-align: right;
+		font-weight: bold;
+	}
+	
+	.node-lookup
+	{
+		
+	}
+}

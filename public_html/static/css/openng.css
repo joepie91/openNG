@@ -215,3 +215,29 @@ i.notification {
 .notification-popup ul, .error-popup ul {
   margin: 4px 0px;
   padding-left: 48px; }
+
+.window-inner .header, .window-inner h1, .window-inner h2 {
+  margin: 4px 0px; }
+.window-inner .lower-header, .window-inner h2 {
+  margin-top: 7px; }
+.window-inner h1 {
+  font-size: 20px; }
+.window-inner h2 {
+  font-size: 16px; }
+.window-inner .unit-content {
+  padding: 6px; }
+.window-inner a.source-ref {
+  float: right;
+  margin-right: -4px;
+  text-decoration: none;
+  color: gray;
+  font-size: 13px; }
+  .window-inner a.source-ref:hover {
+    color: black; }
+.window-inner table {
+  font-size: 13px;
+  width: 100%; }
+.window-inner td.property-name {
+  width: 40%;
+  text-align: right;
+  font-weight: bold; }

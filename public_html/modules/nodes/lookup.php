@@ -35,6 +35,7 @@ try
 	
 	$sData = array(
 		"contents"	=> NewTemplater::Render("nodes/lookup", $locale->strings, array(
+			"id"		=> $sNode->sId,
 			"name"		=> $sNode->sName,
 			"notes"		=> $sNode->sNotes,
 			"properties"	=> $sProperties

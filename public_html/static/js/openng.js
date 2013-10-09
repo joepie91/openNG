@@ -132,8 +132,8 @@ function callbackNodeCreated(form, data)
 function openWindowNodeDetails(id)
 {
 	new JsdeWindow({
-		width: 480,
-		height: 300,
+		width: 680,
+		height: 420,
 		x: 100,
 		y: 100,
 		title: "Node lookup",
