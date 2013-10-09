@@ -79,6 +79,20 @@
 			</div>
 		</div>
 		
+		<div id="autocomplete_propertyname" class="autocompleter autocompleter-template" data-template="propertyname">
+			<div class="results">
+				<div class="entry selected">
+					<span class="autocompleter-field name" data-field="value">Property name</span>
+				</div>
+			</div>
+			<div class="noresults">
+				No results.
+			</div>
+			<div class="loading">
+				Searching...
+			</div>
+		</div>
+		
 		<div id="notification_area">
 			<!-- Notifications go here. -->
 		</div>

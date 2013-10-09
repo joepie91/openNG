@@ -97,9 +97,6 @@ function placeHooksForWindow(win)
 			console.log("Hooking", this, "using callback", callback);
 			hookSubmitEvent($(this), window[callback], window[error_callback]);
 		}
-		
-		/*$
-		$("#thing").autoComplete(autocompleter_propertyname, new PropertyNameCompletionSource($("#thing")));*/
 	});
 }
 
@@ -294,6 +291,10 @@ $(function(){
 		this.target.val("");
 	});
 	
+	autocompleter_propertyname = new AutoCompleter("propertyname");
+	
+	$("body").autoComplete(autocompleter_propertyname, PropertyNameCompletionSource, "input.input-propertyname");
+	
 	$("body").keydown(function(event){
 		switch(event.which)
 		{
@@ -314,5 +315,3 @@ $(function(){
 		}
 	});
 });
-
-autocompleter_propertyname = new AutoCompleter("propertyname");

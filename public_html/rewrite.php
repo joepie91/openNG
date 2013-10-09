@@ -40,6 +40,10 @@ $router->routes = array(
 		"^/autocomplete/search$"		=> array(
 			"target"	=> "modules/autocomplete/search.php",
 			"_json"		=> true
+		),
+		"^/autocomplete/propertyname$"		=> array(
+			"target"	=> "modules/autocomplete/propertyname.php",
+			"_json"		=> true
 		)
 	)
 );

@@ -31,7 +31,7 @@
 				</div>
 				
 				<div class="property auto-duplicate" data-template-name="createnode_property">
-					<input type="text" class="pure-input-1-2 group-first" name="property_name[]" placeholder="Name">
+					<input type="text" class="pure-input-1-2 group-first input-propertyname" name="property_name[]" placeholder="Name">
 					<input type="text" class="pure-input-1-2 group-last" name="property_value[]" placeholder="Value">
 				</div>
 			</div>

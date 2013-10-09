@@ -247,8 +247,18 @@ AutoCompleterInstance.prototype.show = function() {
 		 .off('selectstart');
 	};
 	
-	$.fn.autoComplete = function(autocompleter, source, callback) {
-		this.on("input.autocomplete_hook", function(){
+	$.fn.autoComplete = function(autocompleter, source, selector, callback) {
+		if(typeof selector === "string")
+		{
+			var persistent = true;
+		}
+		else
+		{
+			var persistent = false;
+			callback = selector;  // Shift arguments
+		}
+		
+		var event = function(){
 			if(!$(this).data("attached-autocomplete"))
 			{
 				var instance = autocompleter.spawn(new source($(this)));
@@ -259,7 +269,16 @@ AutoCompleterInstance.prototype.show = function() {
 				instance._updateItems();
 				$(this).attr("autocomplete", "off");
 			}
-		});
+		};
+		
+		if(persistent === true)
+		{
+			this.on("input.autocomplete_hook", selector, event);
+		}
+		else
+		{
+			this.on("input.autocomplete_hook", event);
+		}
 		
 		return this;
 	};

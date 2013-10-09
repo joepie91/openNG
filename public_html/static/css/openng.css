@@ -29,29 +29,32 @@ form.inline {
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px; }
 
-#autocomplete_search {
+.autocompleter {
   display: none;
   position: absolute;
-  width: 400px;
+  /* TODO: set this in the JS! */
+  z-index: 9999999;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Istok Web';
   background-color: white;
   border: 1px solid #5a6dbb;
   border-radius: 0px 0px 3px 3px;
-  border-top: none;
-  -webkit-font-smoothing: antialiased;
-  font-family: 'Istok Web';
-  z-index: 9999999; }
+  border-top: none; }
+  .autocompleter .entry {
+    color: #393939; }
+    .autocompleter .entry.selected {
+      background-color: #4253B6;
+      color: white; }
+
+#autocomplete_search {
+  width: 400px; }
 
 #autocomplete_search .entry {
   border-bottom: 1px solid #c2c2c2;
-  padding: 7px 9px;
-  color: #393939; }
+  padding: 7px 9px; }
 
 #autocomplete_search .entry:last-child {
   border-bottom: none; }
-
-#autocomplete_search .entry.selected {
-  background-color: #4253B6;
-  color: white; }
 
 #autocomplete_search .entry .name {
   font-size: 18px;
@@ -215,6 +218,11 @@ i.notification {
 .notification-popup ul, .error-popup ul {
   margin: 4px 0px;
   padding-left: 48px; }
+
+#autocomplete_propertyname {
+  font-size: 13px; }
+  #autocomplete_propertyname .entry, #autocomplete_propertyname .noresults, #autocomplete_propertyname .loading {
+    padding: 4px 6px; }
 
 .window-inner .header, .window-inner h1, .window-inner h2 {
   margin: 4px 0px; }
