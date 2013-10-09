@@ -271,13 +271,24 @@ AutoCompleterInstance.prototype.show = function() {
 			}
 		};
 		
+		var removal_hook = function(){
+			var autocompleter = $(this).data("attached-autocomplete");
+			
+			if(autocompleter)
+			{
+				autocompleter.remove();
+			}
+		}
+		
 		if(persistent === true)
 		{
 			this.on("input.autocomplete_hook", selector, event);
+			this.on("blur.autocomplete_hook", selector, removal_hook);
 		}
 		else
 		{
 			this.on("input.autocomplete_hook", event);
+			this.on("blur.autocomplete_hook", removal_hook);
 		}
 		
 		return this;
