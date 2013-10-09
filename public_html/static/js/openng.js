@@ -97,6 +97,9 @@ function placeHooksForWindow(win)
 			console.log("Hooking", this, "using callback", callback);
 			hookSubmitEvent($(this), window[callback], window[error_callback]);
 		}
+		
+		/*$
+		$("#thing").autoComplete(autocompleter_propertyname, new PropertyNameCompletionSource($("#thing")));*/
 	});
 }
 
@@ -212,6 +215,37 @@ SearchCompletionSource.prototype.updateItems = function(query, callback) {
 	});
 }
 
+function PropertyNameCompletionSource(element)
+{
+	this.element = element;
+	this.results = [];
+}
+
+PropertyNameCompletionSource.prototype.getItemCount = function() {
+	return this.results.length;
+}
+
+PropertyNameCompletionSource.prototype.getAll = function() {
+	return this.results;
+}
+
+PropertyNameCompletionSource.prototype.getItem = function(index) {
+	return this.results[index];
+}
+
+PropertyNameCompletionSource.prototype.updateItems = function(query, callback) {
+	if(typeof this.request !== "undefined")
+	{
+		this.request.abort();
+	}
+	
+	this.request = $.ajax({
+		url: "/autocomplete/propertyname/?q=" + escape(query),
+		dataType: "json",
+		success: function(result) { this.results = result; callback(); }.bind(this)
+	});
+}
+
 $(function(){
 	hookSubmitEvent($("#form_search"));
 	
@@ -280,3 +314,5 @@ $(function(){
 		}
 	});
 });
+
+autocompleter_propertyname = new AutoCompleter("propertyname");
