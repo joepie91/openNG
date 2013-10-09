@@ -289,7 +289,7 @@ $(function(){
 	
 	autocompleter_search = new AutoCompleter("search");
 	
-	$("#input_search_query").autoComplete(autocompleter_search, new SearchCompletionSource($("#input_search_query")), function(data){
+	$("#input_search_query").autoComplete(autocompleter_search, SearchCompletionSource, function(data){
 		openWindowNodeDetails(data.value);
 		this.target.val("");
 	});

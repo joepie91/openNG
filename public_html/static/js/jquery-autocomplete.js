@@ -251,7 +251,7 @@ AutoCompleterInstance.prototype.show = function() {
 		this.on("input.autocomplete_hook", function(){
 			if(!$(this).data("attached-autocomplete"))
 			{
-				var instance = autocompleter.spawn(source);
+				var instance = autocompleter.spawn(new source($(this)));
 				instance.callback = callback;
 				instance.attachBelow($(this));
 				instance.hookKeyEvents($(this));
