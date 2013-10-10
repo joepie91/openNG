@@ -1,3 +1,12 @@
+/* This is a workaround for the issue with the autocompleter where an input blur is called before
+ * a click event on an autocompleter item is processed. Normally the list would disappear (as a
+ * result of the blur) before the entry was selected, thereby making it impossible to use the mouse
+ * in an autocomplete list. This works around it by preventing a blur disappear when an entry is in
+ * the process of being clicked. Reference: http://stackoverflow.com/a/18873685/1332715 
+ * Tested and working in Opera 12.15.1748, Chrome 30.0.1599.66, Firefox 24.0, Safari 6.0.5. 
+ * Reported not working in Chrome 31.0.1650.16 beta. */
+var autocompleter_clicking = false; 
+
 function AutoCompleter(type) {
 	this.type = type;
 	this.template = $(".autocompleter-template[data-template=" + type + "]");
@@ -49,10 +58,15 @@ AutoCompleterInstance.prototype.unhookKeyEvents = function(element) {
 AutoCompleterInstance.prototype.hookMouseEvents = function(element) {
 	this.element.on("mouseover.autocomplete", ".entry", this._handleMouseOver);
 	this.element.on("mouseup.autocomplete", ".entry", this._handleMouseClick);
+	
+	/* Workaround for blur problem */
+	this.element.on("mousedown.autocomplete", ".entry", function(){ autocompleter_clicking = true; });
+	this.element.on("mouseup.autocomplete", ".entry", function(){ autocompleter_clicking = false; });
 }
 
 AutoCompleterInstance.prototype.unhookMouseEvents = function(element) {
 	this.element.off("mouseover.autocomplete", ".entry");
+	this.element.on("mousedown.autocomplete", ".entry");
 	this.element.on("mouseup.autocomplete", ".entry");
 }
 
@@ -274,7 +288,7 @@ AutoCompleterInstance.prototype.show = function() {
 		var removal_hook = function(){
 			var autocompleter = $(this).data("attached-autocomplete");
 			
-			if(autocompleter)
+			if(autocompleter_clicking == false && autocompleter)
 			{
 				autocompleter.remove();
 			}
