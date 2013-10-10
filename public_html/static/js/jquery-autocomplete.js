@@ -74,7 +74,14 @@ AutoCompleterInstance.prototype._handleKeyUp = function(event) {
 	switch(event.keyCode)
 	{
 		case 9:  // Tab
+			/* This is now handled in the keydown event, to be able to
+			 * implement passthrough behaviour when no autocompletion
+			 * occurs... */
+			break;
 		case 13: // Enter/Return
+			/* We need slightly different behaviour for the Enter key;
+			 * even if no autocompletion has happened, we still want to
+			 * block potential accidental form submits. */
 			if(this.visible == true && this.total_items > 0)
 			{
 				this._selectCurrent();
@@ -89,6 +96,15 @@ AutoCompleterInstance.prototype._handleKeyDown = function(event) {
 	switch(event.keyCode)
 	{
 		case 9:  // Tab
+			if(this.visible == true && this.total_items > 0)
+			{
+				if(this._selectCurrent())
+				{
+					event.stopPropagation();
+					event.preventDefault();
+				}
+			}
+			break;
 		case 13: // Enter/Return
 			/* We don't want this to do anything. */
 			if(this.visible == true && this.total_items > 0)
@@ -165,16 +181,31 @@ AutoCompleterInstance.prototype._moveNext = function() {
 AutoCompleterInstance.prototype._selectCurrent = function() {
 	var item = this.source.getItem(this.current_selection);
 	
-	if(typeof this.callback !== "undefined")
+	/* We only want to autocomplete if the currently selected item still matches
+	 * the original query; this is to deal with race conditions where the user
+	 * has changed his query to no longer be accurate, but the new results have
+	 * not yet been fetched. */
+	if(this.source.matchesItem(this.current_selection, this.target.val()))
 	{
-		this.callback.call(this, item);
+		if(typeof this.callback !== "undefined")
+		{
+			this.callback.call(this, item);
+		}
+		else
+		{
+			this.target.val(item.value);
+		}
+		
+		var has_autocompleted = true;
 	}
 	else
 	{
-		this.target.val(item.value);
+		var has_autocompleted = false;
 	}
 	
 	this.remove();
+	
+	return has_autocompleted;
 }
 
 AutoCompleterInstance.prototype._updateItems = function() {

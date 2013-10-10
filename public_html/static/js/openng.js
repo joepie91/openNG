@@ -212,6 +212,22 @@ SearchCompletionSource.prototype.updateItems = function(query, callback) {
 	});
 }
 
+SearchCompletionSource.prototype.isInItems = function(query) {
+	for(i in this.results)
+	{
+		if(this.results[i].indexOf(query) > 0)
+		{
+			return true;
+		}
+	}
+	
+	return false;
+}
+
+SearchCompletionSource.prototype.matchesItem = function(index, query) {
+	return (this.results[index].name.toLowerCase().indexOf(query.toLowerCase()) > -1);
+}
+
 function PropertyNameCompletionSource(element)
 {
 	this.element = element;
@@ -241,6 +257,26 @@ PropertyNameCompletionSource.prototype.updateItems = function(query, callback) {
 		dataType: "json",
 		success: function(result) { this.results = result; callback(); }.bind(this)
 	});
+}
+
+PropertyNameCompletionSource.prototype.isInItems = function(query) {
+	for(i in this.results)
+	{
+		if(this.results[i].indexOf(query) > 0)
+		{
+			return true;
+		}
+	}
+	
+	return false;
+}
+
+
+PropertyNameCompletionSource.prototype.matchesItem = function(index, query) {
+	console.log("item", this.results[index].value.toLowerCase());
+	console.log("query", query.toLowerCase());
+	console.log("result", this.results[index].value.toLowerCase().indexOf(query.toLowerCase()));
+	return (this.results[index].value.toLowerCase().indexOf(query.toLowerCase()) > -1);
 }
 
 $(function(){
