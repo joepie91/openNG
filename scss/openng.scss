@@ -391,6 +391,22 @@ i.notification
 	
 	.node-lookup
 	{
-		
+		form.property-add
+		{
+			input
+			{
+				width: 100%;
+			}
+			
+			.property-name
+			{
+				input
+				{
+					text-align: right;
+				}
+			}
+		}
 	}
 }
+
+

@@ -1,2 +1,5 @@
 config.json
 .sass-cache
+sasswatch.log
+sasswatch.err
+sasswatch.pid

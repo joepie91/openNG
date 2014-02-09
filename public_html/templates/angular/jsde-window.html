@@ -1,0 +1,18 @@
+<div class="window-wrapper window-styled"  style="width: {{width || 400}}px; height: {{height || 300}}px; left: {{ x || 48 }}px; top: {{ y }}px;" ng-class="{'window-focused': focused}" ng-show="visible">
+	<div class="window-title">
+		<span class="window-title-inner">
+			{{ title }}
+		</span>
+		<div class="window-close">
+			<a href="#">X</a>
+		</div>
+	</div>
+	<div class="window-outer">
+		<div class="window-inner-wrapper">
+			<div class="window-inner" ng-transclude>
+			</div>
+		</div>
+		<div class="window-resizer">
+		</div>
+	</div>
+</div>

@@ -249,3 +249,7 @@ i.notification {
   width: 40%;
   text-align: right;
   font-weight: bold; }
+.window-inner .node-lookup form.property-add input {
+  width: 100%; }
+.window-inner .node-lookup form.property-add .property-name input {
+  text-align: right; }

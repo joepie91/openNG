@@ -1,13 +1,15 @@
 <!doctype>
-<html>
+<html ng-app="cryto.openng">
 	<head>
 		<title>openNG</title>
 		<link rel="stylesheet" href="/static/css/jsde.base.css">
 		<link rel="stylesheet" href="/static/css/jsde.style.css">
 		<script src="/static/js/jquery-1.10.2.min.js"></script>
+		<script src="/static/js/angular.min.js"></script>
 		<script src="/static/js/jquery-timing.min.js"></script>
 		<script src="/static/js/jquery-autocomplete.js"></script>
-		<script src="/static/js/jsde.js"></script>
+		<script src="/static/js/angular-filters.min.js"></script>
+		<script src="/static/js/jsde-angular.js"></script>
 		<script src="/static/js/openng.js"></script>
 		<style>
 			body
@@ -40,7 +42,7 @@
 		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
 		<link rel="stylesheet" href="/static/css/openng.css">
 	</head>
-	<body>
+	<body ng-controller="appController">
 		<div id="main_toolbar">
 			<a href="#" class="pure-button add shadow" id="button_toolbar_addnode"><i class="icon-plus"></i>Create new node</a>
 			
@@ -96,43 +98,9 @@
 		<div id="notification_area">
 			<!-- Notifications go here. -->
 		</div>
-		<div id="jsde_templates">
-			<div class="template_window window-wrapper window-styled">
-				<div class="window-title">
-					<span class="window-title-inner">
-						
-					</span>
-					<div class="window-close">
-						<a href="#">X</a>
-					</div>
-				</div>
-				<div class="window-outer">
-					<div class="window-inner-wrapper">
-						<div class="window-inner">
-						</div>
-					</div>
-					<div class="window-resizer">
-					</div>
-				</div>
-			</div>
-			<div class="template_notification notification-popup">
-				<span class="notification-contents">
-					<span class="notification-header">
-						<i class="icon-info-sign pull-left notification"></i>
-						Notification
-					</span>
-					<span class="message"></span>
-				</span>
-			</div>
-			<div class="template_error error-popup">
-				<span class="notification-contents">
-					<span class="notification-header">
-						<i class="icon-remove-sign pull-left error"></i>
-						Error
-					</span>
-					<span class="message"></span>
-				</span>
-			</div>
-		</div>
+		
+		<jsde-window title="hi!" visible="true" x="48" y="48" min-width="150" min-height="100" max-width="800" max-height="600">
+			test
+		</jsde-window>
 	</body>
 </html>
