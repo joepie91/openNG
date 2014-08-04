@@ -1,4 +1,95 @@
-var module = angular.module('cryto.jsde', ["frapontillo.ex.filters"]);
+var module = angular.module('cryto.jsde', ["frapontillo.ex.filters", "ngRoute"]);
+
+module.factory("jsdeRouteManager", function($routeProvider, $q) {
+	/* This is a partial reimplementation of the routeProvider, and uses part of that.
+	 * Since they already have routing figured out, we might as well implement a
+	 * modified version that works on a window level. */
+	var obj = {};
+	
+	obj.routes = {};
+	
+	obj.getParams = function(target) {
+		var parts = target.split("?");
+		keyValue = parts[1];
+		return angular.parseKeyValue(keyValue);
+	}
+	
+	/* Modified from angular router */
+	obj.parseRoute = function(target, routes) {
+		// Match a route
+		var params, match;
+		angular.forEach(routes, function(route, path) {
+			if (!match && (params = $routeProvider.switchRouteMatcher(target, route))) {
+				match = $routeProvider.inherit(route, {
+					params: angular.extend({}, obj.getParams(target), params),
+					pathParams: params});
+				match.$$route = route;
+			}
+		});
+		// No route matched; fallback to "otherwise" route
+		return match || routes[null] && $routeProvider.inherit(routes[null], {params: {}, pathParams:{}});
+	}
+	
+	/* Modified from angular router */
+	obj.updateRoute = function(scope, element) {
+		var next = obj.parseRoute(scope.path, obj.routes);
+		var last = obj.lastRoute;
+		
+		if (next && last && next.$$route === last.$$route
+				&& angular.equals(next.pathParams, last.pathParams)) {
+			last.params = next.params;
+			angular.copy(last.params, scope.params); // this sets the current route parameters so that other stuff can access it
+		} else if (next || last) {
+			obj.lastRoute = next;
+			
+			// actually change route
+			var controller = next.$$route.controller;
+			
+			if (angular.isDefined(template = next.template)) {
+				if (angular.isFunction(template)) {
+					template = template(next.params);
+				}
+			} else if (angular.isDefined(templateUrl = next.templateUrl)) {
+				if (angular.isFunction(templateUrl)) {
+					templateUrl = templateUrl(next.params);
+				}
+				templateUrl = $sce.getTrustedResourceUrl(templateUrl);
+				if (angular.isDefined(templateUrl)) {
+					next.loadedTemplateUrl = templateUrl;
+					var template = $http.get(templateUrl, {cache: $templateCache}).
+						then(function(response) { return response.data; });
+				}
+			}
+			
+			var container = element.find(".window-inner");
+			container.html(template);
+			container.data('$ngControllerController', controller);
+			container.children().data('$ngControllerController', controller);
+		}
+	}
+	
+	obj.when = function(path, route) {
+		routes[path] = angular.extend(
+			{reloadOnSearch: true},
+			route,
+			path && $routeProvider.pathRegExp(path, route)
+		);
+
+		// create redirection for trailing slashes
+		if (path) {
+			var redirectPath = (path[path.length-1] == '/')
+						? path.substr(0, path.length-1)
+						: path +'/';
+
+			routes[redirectPath] = angular.extend(
+				{redirectTo: path},
+				$routeProvider.pathRegExp(redirectPath, route)
+			);
+		}
+
+		return this;
+	};
+});
 
 module.factory("manager", function($document, defaultFilter){
 	var obj = {};
@@ -102,10 +193,14 @@ module.factory("manager", function($document, defaultFilter){
 		}
 	});
 	
+	obj.resolvePath = function(path) {
+		
+	}
+	
 	return obj;
 });
 
-module.directive("jsdeWindow", function(manager, defaultFilter){
+module.directive("jsdeWindow", function(manager, defaultFilter, jsdeRouteProvider){
 	return {
 		restrict: "E",
 		transclude: true,
@@ -122,7 +217,8 @@ module.directive("jsdeWindow", function(manager, defaultFilter){
 			maxHeight: "@",
 			onScroll: "&",
 			onClose: "&",
-			visible: "@"
+			visible: "@",
+			_path: "@path"
 		},
 		link: function(scope, element, attrs) {
 			manager.addWindow(scope, element);
@@ -139,6 +235,15 @@ module.directive("jsdeWindow", function(manager, defaultFilter){
 				width: 400,
 				height: 300
 			}
+			
+			scope.$watch("_path", function(){
+				scope.path = scope._path;
+			});
+			
+			scope.$watch("path", function(){
+				/* Update the view/controller pair for this path */
+				jsdeRouteProvider.updateRoute(scope, element);
+			})
 			
 			/* Set the initial z-index, this is to prevent glitches when clicking overlapping windows 
 			 * in the same starting position */
@@ -200,6 +305,8 @@ module.directive("jsdeWindow", function(manager, defaultFilter){
 					}
 				}
 			});
+			
+			scope.path = "/";
 		}
 	}
 });

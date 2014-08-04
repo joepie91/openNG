@@ -3,3 +3,4 @@ config.json
 sasswatch.log
 sasswatch.err
 sasswatch.pid
+node_modules

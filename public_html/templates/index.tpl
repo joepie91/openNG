@@ -9,6 +9,7 @@
 		<script src="/static/js/jquery-timing.min.js"></script>
 		<script src="/static/js/jquery-autocomplete.js"></script>
 		<script src="/static/js/angular-filters.min.js"></script>
+		<script src="/static/js/angular-route.js"></script>
 		<script src="/static/js/jsde-angular.js"></script>
 		<script src="/static/js/openng.js"></script>
 		<style>
