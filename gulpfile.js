@@ -15,7 +15,7 @@ var jade = require("gulp-jade");
 var net = require("net");
 
 task = {
-	"source": ["public/**/*.coffee", "routes/**/*.coffee", "models/**/*.coffee", "app.coffee", "util.coffee"]
+	"source": ["public/**/*.coffee", "routes/**/*.coffee", "models/**/*.coffee", "app.coffee", "util.coffee"],
 	"jade": ["views/angular/**/*.jade"]
 }
 
@@ -28,7 +28,7 @@ gulp.task('coffee', function() {
 		.pipe(gulp.dest("."));
 });
 
-gulp/task("jade", function() {
+gulp.task("jade", function() {
 	return gulp.src(task.jade)
 		.pipe(plumber())
 		.pipe(cache("jade"))
