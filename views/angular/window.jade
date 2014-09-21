@@ -1,0 +1,9 @@
+.window-wrapper.window-styled(ng-class="{'window-focused': focused}", ng-show="visible", style="width: {{width || 400}}px; height: {{height || 300}}px; left: {{ x || 0 }}px; top: {{ y || 0 }}px;")
+	.window-title
+		span.window-title-inner {{ title }}
+		.window-close
+			a(href="#") X
+	.window-outer
+		.window-inner-wrapper
+			.window-inner(window-view, ng-transclude)
+		.window-resizer(ng-show="resizable")

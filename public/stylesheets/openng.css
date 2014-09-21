@@ -1,0 +1,589 @@
+body {
+  background-image: url(/images/background.jpg); }
+
+#logo {
+  position: absolute;
+  z-index: 0;
+  right: 32px;
+  top: 16px;
+  color: white;
+  font-size: 64px;
+  font-family: 'Istok Web';
+  font-weight: bold;
+  color: #E2FFFF;
+  text-shadow: 0px 0px 1px #CEE3F9;
+  -webkit-text-shadow: 0px 0px 1px #CEE3F9;
+  -moz-text-shadow: 0px 0px 1px #CEE3F9;
+  -o-text-shadow: 0px 0px 1px #CEE3F9;
+  -ms-text-shadow: 0px 0px 1px #CEE3F9; }
+
+.clear {
+  clear: both; }
+
+form.pure-form-inline {
+  display: inline; }
+
+.autocompleter {
+  display: none;
+  position: absolute;
+  /* TODO: set this in the JS! */
+  z-index: 9999999;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Istok Web';
+  background-color: white;
+  border: 1px solid #5A6DBB;
+  border-radius: 0px 0px 3px 3px;
+  border-top: none; }
+  .autocompleter .entry {
+    color: #393939; }
+    .autocompleter .entry.selected {
+      background-color: #4253B6;
+      color: white; }
+
+#autocomplete_search {
+  width: 400px; }
+
+#autocomplete_search .entry {
+  border-bottom: 1px solid #C2C2C2;
+  padding: 7px 9px; }
+
+#autocomplete_search .entry:last-child {
+  border-bottom: none; }
+
+#autocomplete_search .entry .name {
+  font-size: 18px;
+  font-weight: bold; }
+
+#autocomplete_search .entry .description, #autocomplete_search .entry .date {
+  font-size: 14px; }
+
+#autocomplete_search .entry .date {
+  float: right;
+  color: gray; }
+
+#autocomplete_search .entry.selected .date {
+  color: white; }
+
+#autocomplete_search .loading, #autocomplete_search .noresults {
+  padding: 8px 10px;
+  font-size: 17px; }
+
+#autocomplete_search .loading {
+  font-style: italic; }
+
+.group-first, .group-middle {
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important; }
+
+.group-middle, .group-last {
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important; }
+
+#mainToolbar {
+  padding: 36px 24px; }
+  #mainToolbar, #mainToolbar button {
+    font-family: "Istok Web"; }
+  #mainToolbar a.add {
+    float: left; }
+  #mainToolbar form.search {
+    float: left;
+    margin-left: 12px; }
+    #mainToolbar form.search input, #mainToolbar form.search button {
+      height: 37px; }
+    #mainToolbar form.search input {
+      margin-left: 12px;
+      font-size: 16px;
+      padding: 7px 14px;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+      width: 290px; }
+    #mainToolbar form.search button {
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px; }
+
+.pure-button {
+  padding: 7px 14px; }
+
+.pure-button.shadow {
+  text-shadow: 1px 1px 1px #424242;
+  -webkit-text-shadow: 1px 1px 1px #424242;
+  -moz-text-shadow: 1px 1px 2px #424242;
+  -o-text-shadow: 1px 1px 1px #424242;
+  -ms-text-shadow: 1px 1px 1px #424242; }
+
+.pure-button.add {
+  background-color: #15BA31;
+  color: white; }
+
+.pure-button.okay {
+  background-color: #148C29;
+  color: white; }
+
+.pure-button.search {
+  background-color: #152DBA;
+  color: white; }
+
+.pure-button i {
+  margin-right: 8px;
+  position: relative;
+  top: 1px; }
+
+.element-group {
+  display: block;
+  float: left; }
+
+.element-group * {
+  float: left; }
+
+.formSection {
+  margin-bottom: 5px; }
+  .formSection h1.formSectionTitle {
+    font-size: 16px;
+    margin-top: 0px;
+    margin-bottom: 6px; }
+
+.formField .labelWrapper {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  letter-spacing: normal;
+  word-spacing: normal;
+  vertical-align: top;
+  text-rendering: auto;
+  width: 33.3333%;
+  *width: 33.3023%;
+  padding-top: 4px; }
+  .formField .labelWrapper label {
+    font-size: 95%;
+    margin-left: 1px; }
+.formField:not(.grouped):not(.unlabeled) .inputWrapper {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  letter-spacing: normal;
+  word-spacing: normal;
+  vertical-align: top;
+  text-rendering: auto;
+  width: 66.6667%;
+  *width: 66.6357%; }
+.formField input, .formField textarea {
+  width: 100%; }
+  .formField input.halfWidth, .formField textarea.halfWidth {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    letter-spacing: normal;
+    word-spacing: normal;
+    vertical-align: top;
+    text-rendering: auto;
+    width: 50%;
+    *width: 49.969%; }
+  .formField input.invalid, .formField textarea.invalid {
+    border-color: #B60202 !important; }
+.formField textarea {
+  height: 90px; }
+.formField.unlabeled:not(.grouped) .inputWrapper {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  letter-spacing: normal;
+  word-spacing: normal;
+  vertical-align: top;
+  text-rendering: auto;
+  width: 100%; }
+.formField.grouped .inputWrapper {
+  float: left; }
+  .formField.grouped .inputWrapper input, .formField.grouped .inputWrapper textarea, .formField.grouped .inputWrapper button {
+    border-radius: 0px;
+    border-right-width: 0px; }
+  .formField.grouped .inputWrapper:first-child input, .formField.grouped .inputWrapper:first-child textarea, .formField.grouped .inputWrapper:first-child button {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px; }
+  .formField.grouped .inputWrapper:last-child input, .formField.grouped .inputWrapper:last-child textarea, .formField.grouped .inputWrapper:last-child button {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px; }
+  .formField.grouped .inputWrapper:last-child input, .formField.grouped .inputWrapper:last-child textarea {
+    border-right-width: 1px; }
+
+.toolbarWindow.hasTop .toolbarWindowContents {
+  top: 38px; }
+.toolbarWindow.hasBottom .toolbarWindowContents {
+  bottom: 38px; }
+.toolbarWindow.hasLeft .toolbarWindowContents {
+  left: 38px; }
+.toolbarWindow.hasRight .toolbarWindowContents {
+  right: 38px; }
+.toolbarWindow .toolbarWindowContents {
+  position: absolute;
+  padding: 7px;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  overflow-x: hidden;
+  overflow-y: auto; }
+.toolbarWindow .toolbarWindowControls {
+  position: absolute;
+  padding: 4px;
+  text-align: right; }
+  .toolbarWindow .toolbarWindowControls.top, .toolbarWindow .toolbarWindowControls.bottom {
+    height: 30px;
+    left: 0px;
+    right: 0px; }
+  .toolbarWindow .toolbarWindowControls.top {
+    top: 0px; }
+  .toolbarWindow .toolbarWindowControls.bottom {
+    bottom: 0px; }
+  .toolbarWindow .toolbarWindowControls.left, .toolbarWindow .toolbarWindowControls.right {
+    width: 30px;
+    top: 0px;
+    bottom: 0px; }
+  .toolbarWindow .toolbarWindowControls.left {
+    left: 0px; }
+  .toolbarWindow .toolbarWindowControls.right {
+    right: 0px; }
+
+.pure-button.style-okay {
+  background-color: #148C29;
+  color: white; }
+
+div.formfield, div.property {
+  margin-bottom: 1px; }
+
+.toolbarwindow-contents {
+  position: absolute;
+  padding: 7px;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 38px;
+  overflow-x: hidden;
+  overflow-y: auto; }
+
+.toolbarwindow-toolbar {
+  position: absolute;
+  padding: 4px;
+  height: 30px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  text-align: right; }
+
+i.required {
+  font-size: 10px;
+  margin-left: 4px;
+  color: #9f444a;
+  float: right;
+  margin-right: 7px;
+  margin-top: 2px; }
+
+i.error, i.notification {
+  font-size: 19px;
+  margin-right: 9px !important; }
+
+i.error {
+  color: #FFD2D2; }
+
+i.notification {
+  color: #CBCAFF; }
+
+#notification_area {
+  position: absolute;
+  right: 0px;
+  bottom: 32px;
+  z-index: 2147483640; }
+
+.notification-header {
+  margin-right: 6px;
+  font-weight: bold; }
+
+.notification-popup, .error-popup {
+  text-align: right; }
+
+.notification-popup .notification-contents, .error-popup .notification-contents {
+  text-align: left;
+  display: inline-block;
+  border-radius: 6px;
+  margin-right: 19px;
+  margin-top: 10px;
+  padding: 9px 14px;
+  color: white;
+  font-size: 15px;
+  filter: alpha(opacity=85);
+  opacity: 0.85;
+  width: auto; }
+
+.notification-popup .notification-contents {
+  background-color: #2D2D2D; }
+
+.error-popup .notification-contents {
+  background-color: #371B1B; }
+
+.notification-popup ul, .error-popup ul {
+  margin: 4px 0px;
+  padding-left: 48px; }
+
+#autocomplete_propertyname {
+  font-size: 13px; }
+  #autocomplete_propertyname .entry, #autocomplete_propertyname .noresults, #autocomplete_propertyname .loading {
+    padding: 4px 6px; }
+
+.window-inner .header, .window-inner .window-inner h1, .window-inner .window-inner h1, .window-inner .window-inner h2, .window-inner .window-inner h2 {
+  margin: 4px 0px; }
+.window-inner .lower-header, .window-inner .window-inner h2, .window-inner .window-inner h2 {
+  margin-top: 7px; }
+.window-inner h1 {
+  font-size: 20px; }
+.window-inner h2 {
+  font-size: 16px; }
+.window-inner .unit-content {
+  padding: 6px; }
+.window-inner a.source-ref {
+  float: right;
+  margin-right: -4px;
+  text-decoration: none;
+  color: gray;
+  font-size: 13px; }
+  .window-inner a.source-ref:hover {
+    color: black; }
+.window-inner table {
+  font-size: 13px;
+  width: 100%; }
+.window-inner td.property-name {
+  width: 40%;
+  text-align: right;
+  font-weight: bold; }
+.window-inner .node-lookup form.property-add input {
+  width: 100%; }
+.window-inner .node-lookup form.property-add .property-name input {
+  text-align: right; }
+
+html, body {
+  overflow: hidden; }
+
+body {
+  position: fixed;
+  margin: 0px;
+  width: 100%;
+  height: 100%; }
+
+#jsde_templates {
+  display: none; }
+
+/* MDIWindow Styling | Generic */
+div.window-wrapper {
+  position: absolute; }
+
+div.window-title {
+  position: absolute;
+  z-index: 2;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  cursor: default;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap; }
+
+div.window-outer {
+  position: absolute;
+  z-index: 3;
+  left: 0px;
+  right: 0px;
+  bottom: 0px; }
+
+div.window-inner-wrapper {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  overflow-y: auto;
+  overflow-x: auto; }
+
+.window-noscroll {
+  overflow-x: hidden !important;
+  overflow-y: hidden !important; }
+
+div.window-close {
+  float: right; }
+
+div.window-close a {
+  position: absolute;
+  right: 3px;
+  top: 2px;
+  display: block;
+  padding: 1px 4px;
+  text-decoration: none;
+  font-size: 12px;
+  border-radius: 5px; }
+
+/* MDIWindow Styling | Normal state */
+div.window-styled div.window-inner {
+  visibility: visible; }
+
+/* MDIWindow Styling | Dragging state */
+div.window-dragged div.window-inner {
+  visibility: hidden; }
+
+div.workspace-bar {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px; }
+
+a.workspace-tab {
+  display: block;
+  float: left; }
+
+div.window-resizer {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  bottom: -6px;
+  right: -6px;
+  cursor: se-resize; }
+
+html, body {
+  font-family: 'Varela Round', sans-serif, Trebuchet MS;
+  background-color: silver;
+  background-attachment: fixed;
+  background-position: center; }
+
+/* Temporary styles */
+div#make-window {
+  background-color: white;
+  border: 1px solid gray;
+  padding: 14px;
+  width: 350px;
+  filter: alpha(opacity=85);
+  opacity: 0.85; }
+
+/* MDIWindow Styling | Generic */
+div.window-title {
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 16px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 4px;
+  padding-left: 7px;
+  border-top: 1px solid #959595;
+  border-right: 1px solid #959595;
+  border-left: 1px solid #959595; }
+
+div.window-focused div.window-title {
+  border-top: 1px solid #6262FF;
+  border-right: 1px solid #6262FF;
+  border-left: 1px solid #6262FF; }
+
+div.window-outer {
+  font-size: 13px;
+  top: 25px;
+  border-bottom: 1px solid gray;
+  border-right: 1px solid gray;
+  border-left: 1px solid gray; }
+
+div.window-inner {
+  padding: 7px; }
+
+div.window-close a {
+  color: white;
+  border: 1px solid #014D8C; }
+
+div.window-close a:hover {
+  background-color: #014D8C;
+  border: 1px solid white; }
+
+/* MDIWindow Styling | Normal state */
+div.window-styled div.window-title, div.window-styled div.window-outer {
+  -webkit-box-shadow: 5px 5px 10px #1a1a1a;
+  -moz-box-shadow: 5px 5px 10px #1a1a1a;
+  box-shadow: 5px 5px 10px #1a1a1a; }
+
+div.window-styled div.window-title {
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #525252), color-stop(1, #91acbe));
+  background-image: -moz-linear-gradient(center bottom, #525252 0%, #91acbe 100%);
+  filter: alpha(opacity=95);
+  opacity: 0.95; }
+
+div.window-styled div.window-outer {
+  background-color: #F7F7F0;
+  filter: alpha(opacity=95);
+  opacity: 0.95; }
+
+div.window-focused.window-styled div.window-title {
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0057b3), color-stop(1, #0099ff));
+  background-image: -moz-linear-gradient(center bottom, #0057b3 0%, #0099ff 100%);
+  filter: alpha(opacity=85);
+  opacity: 0.85; }
+
+/* MDIWindow Styling | Dragging state */
+div.window-dragged div.window-title {
+  background-color: #0070D5;
+  background-image: none; }
+
+div.workspace-bar {
+  height: 32px; }
+
+div.window-dragged div.window-outer {
+  background: none; }
+
+div.window-dragged div.window-title, div.window-dragged div.window-outer {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none; }
+
+a.workspace-tab {
+  height: 32px;
+  width: 48px;
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: 1px solid black;
+  background-color: #E9E9E9;
+  padding-top: 6px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  color: black;
+  margin-top: 10px;
+  filter: alpha(opacity=95);
+  opacity: 0.95; }
+
+a.workspace-tab:hover {
+  background-color: #DADADA;
+  margin-top: 0px; }
+
+a.workspace-tab-active {
+  font-weight: bold;
+  background-color: #B9B9B9;
+  color: #BC0000; }
+
+a.workspace-tab-popup {
+  margin-top: 0px; }
+
+a.workspace-tab-add {
+  background-color: #C8C8C8;
+  filter: alpha(opacity=85);
+  opacity: 0.85; }
+
+window {
+  /* In order for stacked z-index to work, and prevent the segments of a window from
+	 * overlapping due to z-index conflicts, we *have* to specify positioning for the
+	 * `window` wrapper element. This way a stacking context is created, and the z-index
+	 * conflicts go away.
+	 */
+  position: absolute;
+  left: 0px;
+  top: 0px; }
+
+/*# sourceMappingURL=openng.css.map */

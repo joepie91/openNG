@@ -1,7 +1,23 @@
 doctype html
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+html(ng-app="cryto.openng")
+	head
+		title OpenNG
+		link(rel='stylesheet', href='/stylesheets/pure-min.css')
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
+		link(rel='stylesheet', href='/stylesheets/openng.css')
+		link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Istok+Web:400,700|Open+Sans:400,700|Varela+Round')
+		script(src="/js/bundled.js")
+	body(ng-controller="appController")
+		canvas.overlay
+		#mainToolbar
+			a.pure-button.add.shadow
+				i.fa.fa-plus
+				|  Create new node
+			form.search.pure-form.pure-form-inline(method="post", action="/search")
+				input(name="query", type="text", placeholder="Enter something to search for...")
+				button.pure-button.search.shadow(type="submit")
+					i.fa.fa-search
+					|  Search
+			#logo OpenNG
+		window(ng-repeat="window in windows", title="{{window.data.title}}", start-x="{{window.data.x}}", start-y="{{window.data.y}}", width="{{window.data.width}}", height="{{window.data.height}}", resizable="{{window.data.resizable}}", initial-route="{{window.data.initialRoute}}")

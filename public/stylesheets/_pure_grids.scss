@@ -1,0 +1,194 @@
+@mixin pure-u-base {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	letter-spacing: normal;
+	word-spacing: normal;
+	vertical-align: top;
+	text-rendering: auto;
+}
+
+@mixin pure-u-1-24 {
+	@include pure-u-base;
+	width: 4.1667%;
+	*width: 4.1357%;
+}
+
+@mixin pure-u-1-12 { @include pure-u-2-24 }
+@mixin pure-u-2-24 {
+	@include pure-u-base;
+	width: 8.3333%;
+	*width: 8.3023%;
+}
+
+@mixin pure-u-1-8 { @include pure-u-3-24 }
+@mixin pure-u-3-24 {
+	@include pure-u-base;
+	width: 12.5000%;
+	*width: 12.4690%;
+}
+
+@mixin pure-u-1-6 { @include pure-u-4-24 }
+@mixin pure-u-4-24 {
+	@include pure-u-base;
+	width: 16.6667%;
+	*width: 16.6357%;
+}
+
+@mixin pure-u-1-5 {
+	@include pure-u-base;
+	width: 20%;
+	*width: 19.9690%;
+}
+
+@mixin pure-u-5-24 {
+	@include pure-u-base;
+	width: 20.8333%;
+	*width: 20.8023%;
+}
+
+@mixin pure-u-1-4 { @include pure-u-6-24 }
+@mixin pure-u-6-24 {
+	@include pure-u-base;
+	width: 25%;
+	*width: 24.9690%;
+}
+
+@mixin pure-u-7-24 {
+	@include pure-u-base;
+	width: 29.1667%;
+	*width: 29.1357%;
+}
+
+@mixin pure-u-1-3 { @include pure-u-8-24 }
+@mixin pure-u-8-24 {
+	@include pure-u-base;
+	width: 33.3333%;
+	*width: 33.3023%;
+}
+
+@mixin pure-u-3-8 { @include pure-u-9-24 }
+@mixin pure-u-9-24 {
+	@include pure-u-base;
+	width: 37.5000%;
+	*width: 37.4690%;
+}
+
+@mixin pure-u-2-5 {
+	@include pure-u-base;
+	width: 40%;
+	*width: 39.9690%;
+}
+
+@mixin pure-u-5-12 { @include pure-u-10-24 }
+@mixin pure-u-10-24 {
+	@include pure-u-base;
+	width: 41.6667%;
+	*width: 41.6357%;
+}
+
+@mixin pure-u-11-24 {
+	@include pure-u-base;
+	width: 45.8333%;
+	*width: 45.8023%;
+}
+
+@mixin pure-u-1-2 { @include pure-u-12-24 }
+@mixin pure-u-12-24 {
+	@include pure-u-base;
+	width: 50%;
+	*width: 49.9690%;
+}
+
+@mixin pure-u-13-24 {
+	@include pure-u-base;
+	width: 54.1667%;
+	*width: 54.1357%;
+}
+
+@mixin pure-u-7-12 { @include pure-u-14-24 }
+@mixin pure-u-14-24 {
+	@include pure-u-base;
+	width: 58.3333%;
+	*width: 58.3023%;
+}
+
+@mixin pure-u-3-5 {
+	@include pure-u-base;
+	width: 60%;
+	*width: 59.9690%;
+}
+
+@mixin pure-u-5-8 { @include pure-u-15-24 }
+@mixin pure-u-15-24 {
+	@include pure-u-base;
+	width: 62.5000%;
+	*width: 62.4690%;
+}
+
+@mixin pure-u-2-3 { @include pure-u-16-24 }
+@mixin pure-u-16-24 {
+	@include pure-u-base;
+	width: 66.6667%;
+	*width: 66.6357%;
+}
+
+@mixin pure-u-17-24 {
+	@include pure-u-base;
+	width: 70.8333%;
+	*width: 70.8023%;
+}
+
+@mixin pure-u-3-4 { @include pure-u-18-24 }
+@mixin pure-u-18-24 {
+	@include pure-u-base;
+	width: 75%;
+	*width: 74.9690%;
+}
+
+@mixin pure-u-19-24 {
+	@include pure-u-base;
+	width: 79.1667%;
+	*width: 79.1357%;
+}
+
+@mixin pure-u-4-5 {
+	@include pure-u-base;
+	width: 80%;
+	*width: 79.9690%;
+}
+
+@mixin pure-u-5-6 { @include pure-u-20-24 }
+@mixin pure-u-20-24 {
+	@include pure-u-base;
+	width: 83.3333%;
+	*width: 83.3023%;
+}
+
+@mixin pure-u-7-8 { @include pure-u-21-24 }
+@mixin pure-u-21-24 {
+	@include pure-u-base;
+	width: 87.5000%;
+	*width: 87.4690%;
+}
+
+@mixin pure-u-11-12 { @include pure-u-22-24 }
+@mixin pure-u-22-24 {
+	@include pure-u-base;
+	width: 91.6667%;
+	*width: 91.6357%;
+}
+
+@mixin pure-u-23-24 {
+	@include pure-u-base;
+	width: 95.8333%;
+	*width: 95.8023%;
+}
+
+@mixin pure-u-1 { @include pure-u-24-24 }
+@mixin pure-u-1-1 { @include pure-u-24-24 }
+@mixin pure-u-5-5 { @include pure-u-24-24 }
+@mixin pure-u-24-24 {
+	@include pure-u-base;
+	width: 100%;
+}

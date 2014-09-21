@@ -1,9 +1,15 @@
-var express = require('express');
-var router = express.Router();
+var router;
 
-/* GET home page. */
-router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+router = require("express-promise-router")();
+
+router.get("/", function(req, res) {
+  return res.render("layout");
+});
+
+router.get("/node/:uuid", function(req, res) {
+  return res.json({
+    "uuid": req.params.uuid
+  });
 });
 
 module.exports = router;

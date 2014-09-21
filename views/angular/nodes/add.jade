@@ -1,0 +1,74 @@
+mixin form(target)
+	form.pure-form(method="post", action=target)&attributes(attributes)
+		block
+
+mixin toolbarWindow(options)
+	- options = options || {}
+	div(class=conditionalClasses(["toolbarWindow"], {hasBottom: options.bottom, hasTop: options.top, hasLeft: options.left, hasRight: options.right}))&attributes(attributes)
+		block
+
+mixin toolbarContents
+	div.toolbarWindowContents&attributes(attributes)
+		block
+
+mixin toolbarControls(options)
+	- options = options || {}
+	div(class=conditionalClasses(["toolbarWindowControls"], {top: options.position == "top", bottom: options.position == "bottom", left: options.position == "left", right: options.position == "right"}))&attributes(attributes)
+		block
+
+mixin formSection(name)
+	div.formSection&attributes(attributes)
+		h1.formSectionTitle= name
+		block
+
+mixin formField(options)
+	- options = options || {}
+	div(auto-duplicate=(options.repeat == true), class=conditionalClasses(["formField"], {unlabeled: options.unlabeled, grouped: options.grouped}))&attributes(attributes)
+		block
+
+mixin formLabel(name, options)
+	- options = options || {}
+	.labelWrapper
+		label&attributes(attributes)
+			= name
+			if options.required
+				i.fa.fa-exclamation-circle.required
+
+mixin formInput(name, options)
+	if options.unit
+		div(class="inputWrapper pure-u-#{options.unit}")
+			+_formInput(name, options)
+	else
+		.inputWrapper
+			+_formInput(name, options)
+
+mixin _formInput(name, options)
+	if options.type == "textarea"
+		textarea(name=name, placeholder=options.placeholder)&attributes(attributes)
+	else
+		input(name=name, type=options.type, placeholder=options.placeholder)&attributes(attributes)
+
+mixin formButton(options)
+	- options = options || {}
+	- options.style = options.style || "default"
+	button(type=options.type, class="pure-button style-#{options.style}")&attributes(attributes)
+		if options.icon
+			i(class="fa fa-#{options.icon}")
+		block
+
++form("/nodes/create")
+	+toolbarWindow({bottom: true})
+		+toolbarContents
+			+formSection("Node")
+				+formField
+					+formLabel("Name", {required: true})
+					+formInput("name", {type: "text"})
+				+formField
+					+formLabel("Notes")
+					+formInput("notes", {type: "textarea"})
+			+formSection("Properties")
+				+formField({repeat: true, grouped: true, unlabeled: true})
+					+formInput("propertyName[]", {placeholder: "Name", unit: "1-2"})
+					+formInput("propertyValue[]", {placeholder: "Value", unit: "1-2"})
+		+toolbarControls({position: "bottom"})
+			+formButton({type: "submit", icon: "check", style: "okay"}) Create
